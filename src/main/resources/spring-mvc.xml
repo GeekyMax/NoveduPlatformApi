@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+    <!--资源位置路径配置-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+    <context:component-scan base-package="cn.novedu.controller"/>
+    <!--使用注解驱动-->
+    <mvc:annotation-driven>
+        <!--jackson 支持 ResponseBody-->
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="objectMapper"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean id="objectMapper" class="cn.novedu.json.CustomObjectMapper">
+        <property name="camelCaseToLowerCaseWithUnderscores" value="true"/>
+        <property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss"/>
+    </bean>
+    <bean id="tokenManager" class="cn.novedu.security.impl.JwtTokenManager"/>
+    <!--验证其配置-->
+    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
+    <!--拦截器配置-->
+    <mvc:interceptors>
+        <!--token检查拦截器配置-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="index.jsp"/>
+            <bean class="cn.novedu.security.SecurityInterceptor">
+                <property name="tokenName" value="X-NOV-TOKEN"/>
+                <property name="tokenManager" ref="tokenManager"/>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>
