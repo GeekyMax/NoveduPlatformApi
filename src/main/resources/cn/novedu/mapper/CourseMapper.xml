@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.novedu.mapper.CourseMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="cn.novedu.bean.Course">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="textbook" property="textbook" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="year" property="year" jdbcType="VARCHAR"/>
+        <result column="semester" property="semester" jdbcType="VARCHAR"/>
+        <result column="english_name" property="englishName" jdbcType="VARCHAR"/>
+        <result column="college" property="college" jdbcType="VARCHAR"/>
+        <result column="credit" property="credit" jdbcType="DOUBLE"/>
+        <result column="week_learning_time" property="weekLearningTime" jdbcType="INTEGER"/>
+        <result column="weight" property="weight" jdbcType="VARCHAR"/>
+        <result column="pre_learning" property="preLearning" jdbcType="VARCHAR"/>
+        <result column="plan" property="plan" jdbcType="VARCHAR"/>
+        <result column="background" property="background" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        name,
+        textbook,
+        code,
+        type,
+        year,
+        semester,
+        english_name,
+        college,
+        credit,
+        week_learning_time,
+        weight,
+        pre_learning,
+        plan,
+        background
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="course.id">
+        INSERT INTO course (
+            id,
+            name,
+            textbook,
+            code,
+            type,
+            year,
+            semester,
+            english_name,
+            college,
+            credit,
+            week_learning_time,
+            weight,
+            pre_learning,
+            plan,
+            background
+        ) VALUES (
+            #{course.id,jdbcType=VARCHAR},
+            #{course.name,jdbcType=VARCHAR},
+            #{course.textbook,jdbcType=VARCHAR},
+            #{course.code,jdbcType=VARCHAR},
+            #{course.type,jdbcType=VARCHAR},
+            #{course.year,jdbcType=VARCHAR},
+            #{course.semester,jdbcType=VARCHAR},
+            #{course.englishName,jdbcType=VARCHAR},
+            #{course.college,jdbcType=VARCHAR},
+            #{course.credit,jdbcType=DOUBLE},
+            #{course.weekLearningTime,jdbcType=INTEGER},
+            #{course.weight,jdbcType=VARCHAR},
+            #{course.preLearning,jdbcType=VARCHAR},
+            #{course.plan,jdbcType=VARCHAR},
+            #{course.background,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="course.id">
+        INSERT INTO course
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="course.id!=null"> id,</if>
+            <if test="course.name!=null"> name,</if>
+            <if test="course.textbook!=null"> textbook,</if>
+            <if test="course.code!=null"> code,</if>
+            <if test="course.type!=null"> type,</if>
+            <if test="course.year!=null"> year,</if>
+            <if test="course.semester!=null"> semester,</if>
+            <if test="course.englishName!=null"> english_name,</if>
+            <if test="course.college!=null"> college,</if>
+            <if test="course.credit!=null"> credit,</if>
+            <if test="course.weekLearningTime!=null"> week_learning_time,</if>
+            <if test="course.weight!=null"> weight,</if>
+            <if test="course.preLearning!=null"> pre_learning,</if>
+            <if test="course.plan!=null"> plan,</if>
+            <if test="course.background!=null"> background,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="course.id!=null">#{course.id,jdbcType=VARCHAR},
+            </if>
+            <if test="course.name!=null">#{course.name,jdbcType=VARCHAR},
+            </if>
+            <if test="course.textbook!=null">#{course.textbook,jdbcType=VARCHAR},
+            </if>
+            <if test="course.code!=null">#{course.code,jdbcType=VARCHAR},
+            </if>
+            <if test="course.type!=null">#{course.type,jdbcType=VARCHAR},
+            </if>
+            <if test="course.year!=null">#{course.year,jdbcType=VARCHAR},
+            </if>
+            <if test="course.semester!=null">#{course.semester,jdbcType=VARCHAR},
+            </if>
+            <if test="course.englishName!=null">#{course.englishName,jdbcType=VARCHAR},
+            </if>
+            <if test="course.college!=null">#{course.college,jdbcType=VARCHAR},
+            </if>
+            <if test="course.credit!=null">#{course.credit,jdbcType=DOUBLE},
+            </if>
+            <if test="course.weekLearningTime!=null">#{course.weekLearningTime,jdbcType=INTEGER},
+            </if>
+            <if test="course.weight!=null">#{course.weight,jdbcType=VARCHAR},
+            </if>
+            <if test="course.preLearning!=null">#{course.preLearning,jdbcType=VARCHAR},
+            </if>
+            <if test="course.plan!=null">#{course.plan,jdbcType=VARCHAR},
+            </if>
+            <if test="course.background!=null">#{course.background,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO course (
+            id,
+            name,
+            textbook,
+            code,
+            type,
+            year,
+            semester,
+            english_name,
+            college,
+            credit,
+            week_learning_time,
+            weight,
+            pre_learning,
+            plan,
+            background
+        )VALUES
+        <foreach collection="courses" item="course" index="index" separator=",">
+            (
+            #{course.id,jdbcType=VARCHAR},
+            #{course.name,jdbcType=VARCHAR},
+            #{course.textbook,jdbcType=VARCHAR},
+            #{course.code,jdbcType=VARCHAR},
+            #{course.type,jdbcType=VARCHAR},
+            #{course.year,jdbcType=VARCHAR},
+            #{course.semester,jdbcType=VARCHAR},
+            #{course.englishName,jdbcType=VARCHAR},
+            #{course.college,jdbcType=VARCHAR},
+            #{course.credit,jdbcType=DOUBLE},
+            #{course.weekLearningTime,jdbcType=INTEGER},
+            #{course.weight,jdbcType=VARCHAR},
+            #{course.preLearning,jdbcType=VARCHAR},
+            #{course.plan,jdbcType=VARCHAR},
+            #{course.background,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective">
+        UPDATE course
+        <set>
+            <if test="course.name != null"> name= #{course.name,jdbcType=VARCHAR},</if>
+            <if test="course.textbook != null"> textbook= #{course.textbook,jdbcType=VARCHAR},</if>
+            <if test="course.code != null"> code= #{course.code,jdbcType=VARCHAR},</if>
+            <if test="course.type != null"> type= #{course.type,jdbcType=VARCHAR},</if>
+            <if test="course.year != null"> year= #{course.year,jdbcType=VARCHAR},</if>
+            <if test="course.semester != null"> semester= #{course.semester,jdbcType=VARCHAR},</if>
+            <if test="course.englishName != null"> english_name= #{course.englishName,jdbcType=VARCHAR},</if>
+            <if test="course.college != null"> college= #{course.college,jdbcType=VARCHAR},</if>
+            <if test="course.credit != null"> credit= #{course.credit,jdbcType=DOUBLE},</if>
+            <if test="course.weekLearningTime != null"> week_learning_time= #{course.weekLearningTime,jdbcType=INTEGER},</if>
+            <if test="course.weight != null"> weight= #{course.weight,jdbcType=VARCHAR},</if>
+            <if test="course.preLearning != null"> pre_learning= #{course.preLearning,jdbcType=VARCHAR},</if>
+            <if test="course.plan != null"> plan= #{course.plan,jdbcType=VARCHAR},</if>
+            <if test="course.background != null"> background= #{course.background,jdbcType=VARCHAR}</if>
+        </set>
+        WHERE id = #{course.id,jdbcType=VARCHAR}
+    </update>
+
+<!--auto generated by codehelper on 2018-11-24-->
+	<select id="findById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from course
+        where id=#{id,jdbcType=VARCHAR}
+    </select>
+</mapper>
+
