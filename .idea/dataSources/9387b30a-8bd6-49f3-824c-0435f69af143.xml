@@ -918,56 +918,129 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="231" parent="2" name="user">
+    <table id="231" parent="2" name="man">
+      <Comment>man</Comment>
+      <Collation>utf8mb4_general_ci</Collation>
+    </table>
+    <table id="232" parent="2" name="user">
       <Comment>user</Comment>
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <column id="232" parent="231" name="id">
+    <column id="233" parent="231" name="id">
       <Position>1</Position>
       <Comment>id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="231" name="name">
+    <column id="234" parent="231" name="username">
       <Position>2</Position>
+      <Comment>username</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="235" parent="231" name="name">
+      <Position>3</Position>
       <Comment>name</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="231" name="password">
-      <Position>3</Position>
+    <column id="236" parent="231" name="password">
+      <Position>4</Position>
       <Comment>password</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="235" parent="231" name="name">
-      <ColNames>name</ColNames>
+    <column id="237" parent="231" name="user_type">
+      <Position>5</Position>
+      <Comment>userType</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;STUDENT&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="238" parent="231" name="username">
+      <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="236" parent="231" name="id">
+    <index id="239" parent="231" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="237" parent="231" name="ix_name">
+    <index id="240" parent="231" name="name">
       <ColNames>name</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="238" parent="231" name="name_2">
-      <ColNames>name</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="239" parent="231" name="PRIMARY">
+    <key id="241" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="240" parent="231" name="name">
+    <key id="242" parent="231" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
+    <column id="243" parent="232" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="244" parent="232" name="username">
+      <Position>2</Position>
+      <Comment>username</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="245" parent="232" name="name">
+      <Position>3</Position>
+      <Comment>name</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="246" parent="232" name="password">
+      <Position>4</Position>
+      <Comment>password</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="247" parent="232" name="user_type">
+      <Position>5</Position>
+      <Comment>userType</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;STUDENT&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="248" parent="232" name="username">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="249" parent="232" name="id">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="250" parent="232" name="name">
       <ColNames>name</ColNames>
-      <UnderlyingIndexName>name</UnderlyingIndexName>
+      <Type>btree</Type>
+    </index>
+    <key id="251" parent="232" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="252" parent="232" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

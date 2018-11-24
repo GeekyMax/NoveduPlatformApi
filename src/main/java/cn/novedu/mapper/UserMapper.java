@@ -1,11 +1,10 @@
 package cn.novedu.mapper;
 
-import cn.novedu.bean.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
+import cn.novedu.bean.User;
 
 @Mapper
 public interface UserMapper {
@@ -17,9 +16,7 @@ public interface UserMapper {
 
     int updateByPrimaryKeySelective(@Param("user") User user);
 
-    User findByName(@Param("name")String name);
-
-
+    User findByUsername(@Param("username")String username);
 
 
 }

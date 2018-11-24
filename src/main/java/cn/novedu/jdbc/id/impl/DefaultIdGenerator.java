@@ -2,6 +2,7 @@ package cn.novedu.jdbc.id.impl;
 
 
 import cn.novedu.jdbc.id.IdGenerator;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.UUID;
  * @author huangyong
  * @since 1.0.0
  */
+@Component
 public class DefaultIdGenerator implements IdGenerator {
 
     @Override

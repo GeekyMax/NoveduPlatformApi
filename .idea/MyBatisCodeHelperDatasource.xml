@@ -21,5 +21,15 @@
         </NewDatabaseInfo>
       </list>
     </option>
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="genJavaMapperPath" value="$PROJECT_DIR$/src/main/java/cn/novedu/mapper" />
+        <option name="genMapperXmlPath" value="$PROJECT_DIR$/src/main/resources/cn/novedu/mapper" />
+        <option name="genSqlFilePath" value="$PROJECT_DIR$/src/main/resources/sql/cn/novedu/bean" />
+        <option name="javaToCrudShouldGenerateService" value="false" />
+        <option name="javaToCrudShouldGenerateServiceInterface" value="false" />
+        <option name="javaToCurdShouldGenerateSql" value="false" />
+      </ProjectProfile>
+    </option>
   </component>
 </project>

@@ -48,7 +48,7 @@ public class UserControllerTest {
     @Test
     public void login() throws Exception {
         mockMvc.perform(post("/login").contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content("{\"username\":\"max\",\"password\":\"password\"}"))
+                .content("{\"username\":\"3160102267\",\"password\":\"password\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.meta.success").value(true))
                 .andExpect(jsonPath("$.data.token").isNotEmpty())
@@ -89,7 +89,7 @@ public class UserControllerTest {
     // 带token:200
     @Test
     public void welcome2() throws Exception {
-        mockMvc.perform(get("/welcome").accept(MediaType.APPLICATION_JSON).header("X-NOV-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ2aWZUZkxVZnpoIiwiaWF0IjoxNTQyOTc4NzUzLCJzdWIiOiJmMjQ4ZDI4ZWVlNTIxMWU4YmFkOTAyMDA0YzRmNGY1MCIsImV4cCI6MTU0Mjk4MjM1M30.R0jHZDqc02k0jdAps7udPJ8CiIHBUpi6s7TeZj87-ps"))
+        mockMvc.perform(get("/welcome").accept(MediaType.APPLICATION_JSON).header("X-NOV-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI0NDYxNTlkNWZlYzM0Zjc4OGI5MTc1ZjkzNTNlZThjYSIsInN1YiI6IjQ0NjE1OWQ1ZmVjMzRmNzg4YjkxNzVmOTM1M2VlOGNhIiwiZXhwIjoxNTQzMDQwNzE1LCJpYXQiOjE1NDMwMzcxMTUsImp0aSI6IkU5bVF5MkVRY0UifQ.qG3t8OXTlDeHRYZayDODm3UnUEtuP-RPQrUhk98wLWc"))
                 .andDo(print())
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$.data").value("welcome"));

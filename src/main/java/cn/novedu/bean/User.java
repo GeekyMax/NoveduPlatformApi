@@ -1,19 +1,26 @@
 package cn.novedu.bean;
 
+import cn.novedu.constant.UserType;
+
+/**
+ * @author Max Huang
+ */
 public class User {
     private String id;
+    private String username;
     private String name;
     private String password;
+    private UserType userType;
 
-    public User(String id, String name, String password) {
+    public User(String id, String username, String name, String password, UserType userType) {
         this.id = id;
+        this.username = username;
         this.name = name;
         this.password = password;
+        this.userType = userType;
     }
 
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public User() {
     }
 
     public String getId() {
@@ -22,6 +29,14 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
@@ -38,5 +53,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 }

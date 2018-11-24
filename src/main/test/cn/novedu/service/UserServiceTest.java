@@ -1,5 +1,6 @@
 package cn.novedu.service;
 
+import cn.novedu.constant.UserType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -14,13 +15,13 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-@Transactional
+//@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+//@Transactional
 public class UserServiceTest {
     @Autowired
     UserService userService;
 
-    Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
+    private Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
 
     @Test
     public void login() {
@@ -28,11 +29,8 @@ public class UserServiceTest {
 
     @Test
     public void signup() {
-        String id = userService.signup("max", "password");
+        String id = userService.signup("3160102267", "enid", "password", UserType.TEACHER);
         logger.debug(id);
         assertNotNull(id);
-        String id2 = userService.signup("max", "password");
-        logger.debug("id2: " + id2);
-        assertNull(id2);
     }
 }
