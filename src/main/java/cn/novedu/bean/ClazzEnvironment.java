@@ -1,8 +1,11 @@
 package cn.novedu.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author Max Huang
  */
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 public class ClazzEnvironment {
     /**
      * 唯一id

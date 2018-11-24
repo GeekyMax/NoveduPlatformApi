@@ -69,7 +69,6 @@ public class UserService {
             return null;
         }
     }
-
     public String getUserId(String token) {
         return tokenManager.getUserId(token);
     }

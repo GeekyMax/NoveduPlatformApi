@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+
 import cn.novedu.bean.AttachClazz;
 
 @Mapper
@@ -16,8 +17,8 @@ public interface AttachClazzMapper {
 
     int updateByPrimaryKeySelective(@Param("attachClazz") AttachClazz attachClazz);
 
-    List<AttachClazz> findByStudentId(@Param("studentId")String studentId);
+    List<AttachClazz> findByStudentId(@Param("studentId") String studentId);
 
-
+    Integer countByStudentIdAndClazzId(@Param("studentId") String studentId, @Param("clazzId") String clazzId);
 
 }

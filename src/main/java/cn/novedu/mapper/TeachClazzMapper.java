@@ -20,6 +20,8 @@ public interface TeachClazzMapper {
 
     List<TeachClazz> findByClazzId(@Param("clazzId") String clazzId);
 
+    Integer countByTeacherIdAndClazzId(@Param("teacherId")String teacherId,@Param("clazzId")String clazzId);
+
 
 
 }

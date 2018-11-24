@@ -1,5 +1,8 @@
 package cn.novedu.constant;
 
 public class Constant {
-    public static final String JWT_SECRET="7786df7fc3a34e26a61c034d5ec8245d";
+    public static final String TOKEN_NAME = "X-NOV-TOKEN";
+    public static final String JWT_SECRET = "7786df7fc3a34e26a61c034d5ec8245d";
+    public static final String TEACHER_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJlNGEyNGUyYzBiMzI0N2UzOGFkMzdkOTcxY2E4YzE2MiIsInN1YiI6ImU0YTI0ZTJjMGIzMjQ3ZTM4YWQzN2Q5NzFjYThjMTYyIiwiZXhwIjoxNTQ0NTE4ODAzLCJpYXQiOjE1NDMwNDc1NzQsImp0aSI6IlBvSW1IU0kzU3UifQ.gVMyOKrZtLOcirCjfE9wBn1zwpNmE596g5OytnpNbIw";
+    public static final String STUDENT_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI0NDYxNTlkNWZlYzM0Zjc4OGI5MTc1ZjkzNTNlZThjYSIsInN1YiI6IjQ0NjE1OWQ1ZmVjMzRmNzg4YjkxNzVmOTM1M2VlOGNhIiwiZXhwIjoxNTQzMTkzOTg1LCJpYXQiOjE1NDMwNDM3ODgsImp0aSI6ImxnamNWQzBKMzYifQ.ij6mLFxPX1oJh1YiV4nBVp98ybl20a3I7HbuWVAlCGE";
 }

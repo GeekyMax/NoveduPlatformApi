@@ -1,9 +1,12 @@
 package cn.novedu.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * 课程实体类
  * @author Max Huang
  */
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 public class Course {
     /**
      * 课程唯一id

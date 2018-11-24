@@ -1,7 +1,12 @@
 package cn.novedu.bean;
 
 import cn.novedu.constant.Sex;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * @author Max Huang
+ */
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 public class StudentInfo {
     /**
      * 唯一id
