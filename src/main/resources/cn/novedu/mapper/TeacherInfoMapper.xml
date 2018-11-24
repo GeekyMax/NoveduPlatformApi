@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.novedu.mapper.TeacherInfoMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="cn.novedu.bean.TeacherInfo">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="college" property="college" jdbcType="VARCHAR"/>
+        <result column="department" property="department" jdbcType="VARCHAR"/>
+        <result column="position" property="position" jdbcType="VARCHAR"/>
+        <result column="education" property="education" jdbcType="VARCHAR"/>
+        <result column="past_evaluation" property="pastEvaluation" jdbcType="VARCHAR"/>
+        <result column="teach_style" property="teachStyle" jdbcType="VARCHAR"/>
+        <result column="publish" property="publish" jdbcType="VARCHAR"/>
+        <result column="honor" property="honor" jdbcType="VARCHAR"/>
+        <result column="more" property="more" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        username,
+        name,
+        sex,
+        college,
+        department,
+        position,
+        education,
+        past_evaluation,
+        teach_style,
+        publish,
+        honor,
+        more,
+        phone,
+        email
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="teacherInfo.id">
+        INSERT INTO teacher_info (
+            id,
+            username,
+            name,
+            sex,
+            college,
+            department,
+            position,
+            education,
+            past_evaluation,
+            teach_style,
+            publish,
+            honor,
+            more,
+            phone,
+            email
+        ) VALUES (
+            #{teacherInfo.id,jdbcType=VARCHAR},
+            #{teacherInfo.username,jdbcType=VARCHAR},
+            #{teacherInfo.name,jdbcType=VARCHAR},
+            #{teacherInfo.sex,jdbcType=VARCHAR},
+            #{teacherInfo.college,jdbcType=VARCHAR},
+            #{teacherInfo.department,jdbcType=VARCHAR},
+            #{teacherInfo.position,jdbcType=VARCHAR},
+            #{teacherInfo.education,jdbcType=VARCHAR},
+            #{teacherInfo.pastEvaluation,jdbcType=VARCHAR},
+            #{teacherInfo.teachStyle,jdbcType=VARCHAR},
+            #{teacherInfo.publish,jdbcType=VARCHAR},
+            #{teacherInfo.honor,jdbcType=VARCHAR},
+            #{teacherInfo.more,jdbcType=VARCHAR},
+            #{teacherInfo.phone,jdbcType=VARCHAR},
+            #{teacherInfo.email,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="teacherInfo.id">
+        INSERT INTO teacher_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="teacherInfo.id!=null"> id,</if>
+            <if test="teacherInfo.username!=null"> username,</if>
+            <if test="teacherInfo.name!=null"> name,</if>
+            <if test="teacherInfo.sex!=null"> sex,</if>
+            <if test="teacherInfo.college!=null"> college,</if>
+            <if test="teacherInfo.department!=null"> department,</if>
+            <if test="teacherInfo.position!=null"> position,</if>
+            <if test="teacherInfo.education!=null"> education,</if>
+            <if test="teacherInfo.pastEvaluation!=null"> past_evaluation,</if>
+            <if test="teacherInfo.teachStyle!=null"> teach_style,</if>
+            <if test="teacherInfo.publish!=null"> publish,</if>
+            <if test="teacherInfo.honor!=null"> honor,</if>
+            <if test="teacherInfo.more!=null"> more,</if>
+            <if test="teacherInfo.phone!=null"> phone,</if>
+            <if test="teacherInfo.email!=null"> email,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="teacherInfo.id!=null">#{teacherInfo.id,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.username!=null">#{teacherInfo.username,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.name!=null">#{teacherInfo.name,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.sex!=null">#{teacherInfo.sex,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.college!=null">#{teacherInfo.college,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.department!=null">#{teacherInfo.department,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.position!=null">#{teacherInfo.position,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.education!=null">#{teacherInfo.education,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.pastEvaluation!=null">#{teacherInfo.pastEvaluation,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.teachStyle!=null">#{teacherInfo.teachStyle,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.publish!=null">#{teacherInfo.publish,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.honor!=null">#{teacherInfo.honor,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.more!=null">#{teacherInfo.more,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.phone!=null">#{teacherInfo.phone,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherInfo.email!=null">#{teacherInfo.email,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO teacher_info (
+            id,
+            username,
+            name,
+            sex,
+            college,
+            department,
+            position,
+            education,
+            past_evaluation,
+            teach_style,
+            publish,
+            honor,
+            more,
+            phone,
+            email
+        )VALUES
+        <foreach collection="teacherInfos" item="teacherInfo" index="index" separator=",">
+            (
+            #{teacherInfo.id,jdbcType=VARCHAR},
+            #{teacherInfo.username,jdbcType=VARCHAR},
+            #{teacherInfo.name,jdbcType=VARCHAR},
+            #{teacherInfo.sex,jdbcType=VARCHAR},
+            #{teacherInfo.college,jdbcType=VARCHAR},
+            #{teacherInfo.department,jdbcType=VARCHAR},
+            #{teacherInfo.position,jdbcType=VARCHAR},
+            #{teacherInfo.education,jdbcType=VARCHAR},
+            #{teacherInfo.pastEvaluation,jdbcType=VARCHAR},
+            #{teacherInfo.teachStyle,jdbcType=VARCHAR},
+            #{teacherInfo.publish,jdbcType=VARCHAR},
+            #{teacherInfo.honor,jdbcType=VARCHAR},
+            #{teacherInfo.more,jdbcType=VARCHAR},
+            #{teacherInfo.phone,jdbcType=VARCHAR},
+            #{teacherInfo.email,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective">
+        UPDATE teacher_info
+        <set>
+            <if test="teacherInfo.username != null"> username= #{teacherInfo.username,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.name != null"> name= #{teacherInfo.name,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.sex != null"> sex= #{teacherInfo.sex,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.college != null"> college= #{teacherInfo.college,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.department != null"> department= #{teacherInfo.department,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.position != null"> position= #{teacherInfo.position,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.education != null"> education= #{teacherInfo.education,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.pastEvaluation != null"> past_evaluation= #{teacherInfo.pastEvaluation,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.teachStyle != null"> teach_style= #{teacherInfo.teachStyle,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.publish != null"> publish= #{teacherInfo.publish,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.honor != null"> honor= #{teacherInfo.honor,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.more != null"> more= #{teacherInfo.more,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.phone != null"> phone= #{teacherInfo.phone,jdbcType=VARCHAR},</if>
+            <if test="teacherInfo.email != null"> email= #{teacherInfo.email,jdbcType=VARCHAR}</if>
+        </set>
+        WHERE id = #{teacherInfo.id,jdbcType=VARCHAR}
+    </update>
+
+<!--auto generated by codehelper on 2018-11-24-->
+	<select id="findById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from teacher_info
+        where id=#{id,jdbcType=VARCHAR}
+    </select>
+</mapper>
+

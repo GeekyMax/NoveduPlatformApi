@@ -95,4 +95,23 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$.data").value("welcome"));
     }
 
+    // 用户信息:200,学生,enid
+    @Test
+    public void users() throws Exception {
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON).header("X-NOV-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI0NDYxNTlkNWZlYzM0Zjc4OGI5MTc1ZjkzNTNlZThjYSIsInN1YiI6IjQ0NjE1OWQ1ZmVjMzRmNzg4YjkxNzVmOTM1M2VlOGNhIiwiZXhwIjoxNTQzMTkzOTg1LCJpYXQiOjE1NDMwNDM3ODgsImp0aSI6ImxnamNWQzBKMzYifQ.ij6mLFxPX1oJh1YiV4nBVp98ybl20a3I7HbuWVAlCGE"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.name").value("enid"));
+    }
+
+    // 用户信息:200,TEACHER,max
+    @Test
+    public void users2() throws Exception {
+        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON).header("X-NOV-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJlNGEyNGUyYzBiMzI0N2UzOGFkMzdkOTcxY2E4YzE2MiIsInN1YiI6ImU0YTI0ZTJjMGIzMjQ3ZTM4YWQzN2Q5NzFjYThjMTYyIiwiZXhwIjoxNTQ0NTE4ODAzLCJpYXQiOjE1NDMwNDc1NzQsImp0aSI6IlBvSW1IU0kzU3UifQ.gVMyOKrZtLOcirCjfE9wBn1zwpNmE596g5OytnpNbIw"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.name").value("max"));
+    }
+
+
 }

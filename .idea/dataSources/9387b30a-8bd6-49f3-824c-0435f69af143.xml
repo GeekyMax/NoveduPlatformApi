@@ -922,39 +922,47 @@
       <Comment>man</Comment>
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <table id="232" parent="2" name="user">
+    <table id="232" parent="2" name="student_info">
+      <Comment>student_info</Comment>
+      <Collation>utf8mb4_general_ci</Collation>
+    </table>
+    <table id="233" parent="2" name="teacher_info">
+      <Comment>teacher_info</Comment>
+      <Collation>utf8mb4_general_ci</Collation>
+    </table>
+    <table id="234" parent="2" name="user">
       <Comment>user</Comment>
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <column id="233" parent="231" name="id">
+    <column id="235" parent="231" name="id">
       <Position>1</Position>
       <Comment>id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="231" name="username">
+    <column id="236" parent="231" name="username">
       <Position>2</Position>
       <Comment>username</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="231" name="name">
+    <column id="237" parent="231" name="name">
       <Position>3</Position>
       <Comment>name</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="231" name="password">
+    <column id="238" parent="231" name="password">
       <Position>4</Position>
       <Comment>password</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="237" parent="231" name="user_type">
+    <column id="239" parent="231" name="user_type">
       <Position>5</Position>
       <Comment>userType</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -962,57 +970,307 @@
       <DefaultExpression>&apos;STUDENT&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="238" parent="231" name="username">
+    <index id="240" parent="231" name="username">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="239" parent="231" name="id">
+    <index id="241" parent="231" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="240" parent="231" name="name">
+    <index id="242" parent="231" name="name">
       <ColNames>name</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="241" parent="231" name="PRIMARY">
+    <key id="243" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="242" parent="231" name="username">
+    <key id="244" parent="231" name="username">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>
-    <column id="243" parent="232" name="id">
+    <column id="245" parent="232" name="id">
+      <Position>1</Position>
+      <Comment>唯一id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="246" parent="232" name="username">
+      <Position>2</Position>
+      <Comment>学生学号</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="247" parent="232" name="name">
+      <Position>3</Position>
+      <Comment>学生姓名</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="248" parent="232" name="sex">
+      <Position>4</Position>
+      <Comment>学生性别</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;MALE&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="249" parent="232" name="college">
+      <Position>5</Position>
+      <Comment>学生学院</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="250" parent="232" name="major">
+      <Position>6</Position>
+      <Comment>学生专业</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="251" parent="232" name="grade">
+      <Position>7</Position>
+      <Comment>学生年级</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="232" name="clazz">
+      <Position>8</Position>
+      <Comment>学生班级</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="253" parent="232" name="phone">
+      <Position>9</Position>
+      <Comment>学生电话</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="254" parent="232" name="email">
+      <Position>10</Position>
+      <Comment>学生邮箱</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="255" parent="232" name="username">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="256" parent="232" name="id">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="257" parent="232" name="username_2">
+      <ColNames>username</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="258" parent="232" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="259" parent="232" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
+    <foreign-key id="260" parent="232" name="student_info_fk">
+      <ColNames>id</ColNames>
+      <RefSchemaName>example</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="261" parent="233" name="id">
+      <Position>1</Position>
+      <Comment>教师唯一id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="262" parent="233" name="username">
+      <Position>2</Position>
+      <Comment>教师卡号</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="263" parent="233" name="name">
+      <Position>3</Position>
+      <Comment>教师姓名</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="264" parent="233" name="sex">
+      <Position>4</Position>
+      <Comment>教师性别 默认男</Comment>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;MALE&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="265" parent="233" name="college">
+      <Position>5</Position>
+      <Comment>教师所属学院</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="266" parent="233" name="department">
+      <Position>6</Position>
+      <Comment>教师所属系</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="267" parent="233" name="position">
+      <Position>7</Position>
+      <Comment>教师职位</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="268" parent="233" name="education">
+      <Position>8</Position>
+      <Comment>教师学历</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="269" parent="233" name="past_evaluation">
+      <Position>9</Position>
+      <Comment>教师以往教学评价</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="270" parent="233" name="teach_style">
+      <Position>10</Position>
+      <Comment>教学风格</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="271" parent="233" name="publish">
+      <Position>11</Position>
+      <Comment>出版作品</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="272" parent="233" name="honor">
+      <Position>12</Position>
+      <Comment>教师所获荣誉</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="273" parent="233" name="more">
+      <Position>13</Position>
+      <Comment>更多信息</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="274" parent="233" name="phone">
+      <Position>14</Position>
+      <Comment>教师电话</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="275" parent="233" name="email">
+      <Position>15</Position>
+      <Comment>教师电子邮箱</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="276" parent="233" name="username">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="277" parent="233" name="id">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="278" parent="233" name="username_2">
+      <ColNames>username</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="279" parent="233" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="280" parent="233" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
+    <foreign-key id="281" parent="233" name="teacher_info_ibfk_1">
+      <ColNames>id</ColNames>
+      <RefSchemaName>example</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="282" parent="234" name="id">
       <Position>1</Position>
       <Comment>id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="232" name="username">
+    <column id="283" parent="234" name="username">
       <Position>2</Position>
       <Comment>username</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="232" name="name">
+    <column id="284" parent="234" name="name">
       <Position>3</Position>
       <Comment>name</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="232" name="password">
+    <column id="285" parent="234" name="password">
       <Position>4</Position>
       <Comment>password</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="232" name="user_type">
+    <column id="286" parent="234" name="user_type">
       <Position>5</Position>
       <Comment>userType</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1020,25 +1278,25 @@
       <DefaultExpression>&apos;STUDENT&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="248" parent="232" name="username">
+    <index id="287" parent="234" name="username">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="249" parent="232" name="id">
+    <index id="288" parent="234" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="250" parent="232" name="name">
+    <index id="289" parent="234" name="name">
       <ColNames>name</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="251" parent="232" name="PRIMARY">
+    <key id="290" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="252" parent="232" name="username">
+    <key id="291" parent="234" name="username">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>

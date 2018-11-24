@@ -27,6 +27,11 @@ public class Response {
         return this;
     }
 
+    public Response failure(int code, String message) {
+        this.meta = new Meta(code, false, message);
+        return this;
+    }
+
     public Meta getMeta() {
         return meta;
     }
@@ -36,16 +41,28 @@ public class Response {
     }
 
     public class Meta {
+        private int code;
         private boolean success;
         private String message;
 
         public Meta(boolean success) {
             this.success = success;
+            if (success) {
+                this.code = 200;
+            } else {
+                this.code = 500;
+            }
         }
 
         public Meta(boolean success, String message) {
+            this(success);
             this.message = message;
+        }
+
+        public Meta(int code, boolean success, String message) {
+            this.code = code;
             this.success = success;
+            this.message = message;
         }
 
         public boolean isSuccess() {
@@ -54,6 +71,10 @@ public class Response {
 
         public String getMessage() {
             return message;
+        }
+
+        public int getCode() {
+            return code;
         }
     }
 }

@@ -29,7 +29,7 @@ public class UserServiceTest {
 
     @Test
     public void signup() {
-        String id = userService.signup("3160102267", "enid", "password", UserType.TEACHER);
+        String id = userService.signup("3160102266", "max", "password", UserType.TEACHER);
         logger.debug(id);
         assertNotNull(id);
     }

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.novedu.mapper.StudentInfoMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="cn.novedu.bean.StudentInfo">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="college" property="college" jdbcType="VARCHAR"/>
+        <result column="major" property="major" jdbcType="VARCHAR"/>
+        <result column="grade" property="grade" jdbcType="VARCHAR"/>
+        <result column="clazz" property="clazz" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        username,
+        name,
+        sex,
+        college,
+        major,
+        grade,
+        clazz,
+        phone,
+        email
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="studentInfo.id">
+        INSERT INTO student_info (id, username, name, sex, college, major, grade, clazz, phone, email)
+        VALUES (#{studentInfo.id,jdbcType=VARCHAR},
+                #{studentInfo.username,jdbcType=VARCHAR},
+                #{studentInfo.name,jdbcType=VARCHAR},
+                #{studentInfo.sex,jdbcType=VARCHAR},
+                #{studentInfo.college,jdbcType=VARCHAR},
+                #{studentInfo.major,jdbcType=VARCHAR},
+                #{studentInfo.grade,jdbcType=VARCHAR},
+                #{studentInfo.clazz,jdbcType=VARCHAR},
+                #{studentInfo.phone,jdbcType=VARCHAR},
+                #{studentInfo.email,jdbcType=VARCHAR})
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="studentInfo.id">
+        INSERT INTO student_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="studentInfo.id!=null">id,</if>
+            <if test="studentInfo.username!=null">username,</if>
+            <if test="studentInfo.name!=null">name,</if>
+            <if test="studentInfo.sex!=null">sex,</if>
+            <if test="studentInfo.college!=null">college,</if>
+            <if test="studentInfo.major!=null">major,</if>
+            <if test="studentInfo.grade!=null">grade,</if>
+            <if test="studentInfo.clazz!=null">clazz,</if>
+            <if test="studentInfo.phone!=null">phone,</if>
+            <if test="studentInfo.email!=null">email,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="studentInfo.id!=null">#{studentInfo.id,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.username!=null">#{studentInfo.username,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.name!=null">#{studentInfo.name,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.sex!=null">#{studentInfo.sex,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.college!=null">#{studentInfo.college,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.major!=null">#{studentInfo.major,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.grade!=null">#{studentInfo.grade,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.clazz!=null">#{studentInfo.clazz,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.phone!=null">#{studentInfo.phone,jdbcType=VARCHAR},
+            </if>
+            <if test="studentInfo.email!=null">#{studentInfo.email,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO student_info (
+        id,
+        username,
+        name,
+        sex,
+        college,
+        major,
+        grade,
+        clazz,
+        phone,
+        email
+        )VALUES
+        <foreach collection="studentInfos" item="studentInfo" index="index" separator=",">
+            (
+            #{studentInfo.id,jdbcType=VARCHAR},
+            #{studentInfo.username,jdbcType=VARCHAR},
+            #{studentInfo.name,jdbcType=VARCHAR},
+            #{studentInfo.sex,jdbcType=VARCHAR},
+            #{studentInfo.college,jdbcType=VARCHAR},
+            #{studentInfo.major,jdbcType=VARCHAR},
+            #{studentInfo.grade,jdbcType=VARCHAR},
+            #{studentInfo.clazz,jdbcType=VARCHAR},
+            #{studentInfo.phone,jdbcType=VARCHAR},
+            #{studentInfo.email,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective">
+        UPDATE student_info
+        <set>
+            <if test="studentInfo.username != null">username= #{studentInfo.username,jdbcType=VARCHAR},</if>
+            <if test="studentInfo.name != null">name= #{studentInfo.name,jdbcType=VARCHAR},</if>
+            <if test="studentInfo.sex != null">sex= #{studentInfo.sex,jdbcType=VARCHAR},</if>
+            <if test="studentInfo.college != null">college= #{studentInfo.college,jdbcType=VARCHAR},</if>
+            <if test="studentInfo.major != null">major= #{studentInfo.major,jdbcType=VARCHAR},</if>
+            <if test="studentInfo.grade != null">grade= #{studentInfo.grade,jdbcType=VARCHAR},</if>
+            <if test="studentInfo.clazz != null">clazz= #{studentInfo.clazz,jdbcType=VARCHAR},</if>
+            <if test="studentInfo.phone != null">phone= #{studentInfo.phone,jdbcType=VARCHAR},</if>
+            <if test="studentInfo.email != null">email= #{studentInfo.email,jdbcType=VARCHAR}</if>
+        </set>
+        WHERE id = #{studentInfo.id,jdbcType=VARCHAR}
+    </update>
+
+    <!--auto generated by codehelper on 2018-11-24-->
+    <select id="findById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from student_info
+        where id=#{id,jdbcType=VARCHAR}
+    </select>
+</mapper>
+

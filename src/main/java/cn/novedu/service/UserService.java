@@ -1,4 +1,5 @@
 package cn.novedu.service;
+import java.util.List;
 
 import cn.novedu.bean.User;
 import cn.novedu.constant.UserType;
@@ -48,12 +49,12 @@ public class UserService {
     /**
      * 用户注册,成功返回用户id,失败返回null
      *
-     * @Param username
      * @param name
      * @param password
      * @return
+     * @Param username
      */
-    public String signup(String username, String name,String password,  UserType userType) {
+    public String signup(String username, String name, String password, UserType userType) {
         try {
             String id = idGenerator.generateId();
             logger.debug("generated id is: " + id);
@@ -68,4 +69,12 @@ public class UserService {
             return null;
         }
     }
+
+    public String getUserId(String token) {
+        return tokenManager.getUserId(token);
+    }
+
+	public UserType findUserTypeById(String id){
+		 return userMapper.findUserTypeById(id);
+	}
 }
