@@ -16,6 +16,5 @@ public interface TeacherInfoMapper {
 
     int updateByPrimaryKeySelective(@Param("teacherInfo") TeacherInfo teacherInfo);
     TeacherInfo findById(@Param("id")String id);
-
-
+    List<TeacherInfo> findByClazzId(@Param("clazzId") String clazzId);
 }

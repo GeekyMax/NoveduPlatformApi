@@ -138,5 +138,6 @@
         from student_info
         where id=#{id,jdbcType=VARCHAR}
     </select>
+
 </mapper>
 
