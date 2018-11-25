@@ -39,6 +39,14 @@ public class Clazz {
      */
     private ClazzSetting clazzSetting;
 
+    public Clazz(String code, Course course, List<TeacherInfo> teachers, List<ClazzEnvironment> clazzEnvironments, ClazzSetting clazzSetting) {
+        this.code = code;
+        this.course = course;
+        this.teachers = teachers;
+        this.clazzEnvironments = clazzEnvironments;
+        this.clazzSetting = clazzSetting;
+    }
+
     public String getId() {
         return id;
     }

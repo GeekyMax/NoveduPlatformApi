@@ -23,21 +23,28 @@
 
     <!--auto generated Code-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="clazz.id">
+        <selectKey keyProperty="clazz.id" order="BEFORE" resultType="string">
+            select replace(uuid(),'-','') from dual;
+        </selectKey>
         INSERT INTO clazz (id, code, student_count, course_id)
         VALUES (#{clazz.id,jdbcType=VARCHAR},
-                #{clazz.code,jdbcType=VARCHAR},
-                #{clazz.studentCount,jdbcType=INTEGER},
-                #{clazz.course.id,jdbcType=VARCHAR})
+        #{clazz.code,jdbcType=VARCHAR},
+        #{clazz.studentCount,jdbcType=INTEGER},
+        #{clazz.course.id,jdbcType=VARCHAR})
     </insert>
 
     <!--auto generated Code-->
     <!--need to be rewritten-->
     <insert id="insertSelective" useGeneratedKeys="true" keyProperty="clazz.id">
+        <selectKey keyProperty="clazz.id" order="BEFORE" resultType="string">
+            select replace(uuid(),'-','') from dual;
+        </selectKey>
         INSERT INTO clazz
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="clazz.id!=null">id,</if>
             <if test="clazz.code!=null">code,</if>
             <if test="clazz.studentCount!=null">student_count,</if>
+            <if test="clazz.course.id!=null">course_id,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -47,6 +54,7 @@
             </if>
             <if test="clazz.studentCount!=null">#{clazz.studentCount,jdbcType=INTEGER},
             </if>
+            <if test="clazz.course.id!=null">#{clazz.course.id},</if>
         </trim>
     </insert>
 
@@ -96,7 +104,7 @@
     <select id="findByStudentId" resultMap="BaseResultMap">
         select c.id, code, student_count, course_id
         from clazz c
-                 inner join attach_clazz a on c.id = a.clazz_id
+                 inner join attend_clazz a on c.id = a.clazz_id
         where a.student_id = #{studentId}
     </select>
     <select id="findByTeacherId" resultMap="BaseResultMap">
@@ -104,6 +112,18 @@
         from clazz c
                  inner join teach_clazz tc on c.id = tc.clazz_id
         where tc.teacher_id = #{teacherId}
+    </select>
+    <select id="findByClazzIdAndStudentId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from clazz c inner join attend_clazz a on c.id = a.clazz_id
+        where a.student_id=#{studentId} and c.id=#{clazzId}
+    </select>
+    <select id="findByClazzIdAndTeacherId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from clazz c inner join teach_clazz tc on c.id = tc.clazz_id
+        where tc.teacher_id=#{teacherId} and c.id=#{clazzId}
     </select>
 
 </mapper>

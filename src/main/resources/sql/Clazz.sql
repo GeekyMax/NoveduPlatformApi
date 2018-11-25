@@ -5,9 +5,10 @@ CREATE TABLE clazz (
   COMMENT '开课id',
   code          VARCHAR(50) UNIQUE NOT NULL
   COMMENT '本课代码',
-  student_count INT(11)            NOT NULL DEFAULT -1
+  student_count INT(11)            NOT NULL DEFAULT '0'
   COMMENT '学生数量',
-  course_id     VARCHAR(50)        NOT NULL,
+  course_id     VARCHAR(50)        NOT NULL
+  COMMENT '课程id',
   INDEX (id),
   INDEX (code),
   PRIMARY KEY (id),

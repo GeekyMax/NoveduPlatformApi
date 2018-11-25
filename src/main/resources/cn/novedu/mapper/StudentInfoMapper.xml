@@ -33,15 +33,15 @@
     <insert id="insert" useGeneratedKeys="true" keyProperty="studentInfo.id">
         INSERT INTO student_info (id, username, name, sex, college, major, grade, clazz, phone, email)
         VALUES (#{studentInfo.id,jdbcType=VARCHAR},
-                #{studentInfo.username,jdbcType=VARCHAR},
-                #{studentInfo.name,jdbcType=VARCHAR},
-                #{studentInfo.sex,jdbcType=VARCHAR},
-                #{studentInfo.college,jdbcType=VARCHAR},
-                #{studentInfo.major,jdbcType=VARCHAR},
-                #{studentInfo.grade,jdbcType=VARCHAR},
-                #{studentInfo.clazz,jdbcType=VARCHAR},
-                #{studentInfo.phone,jdbcType=VARCHAR},
-                #{studentInfo.email,jdbcType=VARCHAR})
+        #{studentInfo.username,jdbcType=VARCHAR},
+        #{studentInfo.name,jdbcType=VARCHAR},
+        #{studentInfo.sex,jdbcType=VARCHAR},
+        #{studentInfo.college,jdbcType=VARCHAR},
+        #{studentInfo.major,jdbcType=VARCHAR},
+        #{studentInfo.grade,jdbcType=VARCHAR},
+        #{studentInfo.clazz,jdbcType=VARCHAR},
+        #{studentInfo.phone,jdbcType=VARCHAR},
+        #{studentInfo.email,jdbcType=VARCHAR})
     </insert>
 
     <!--auto generated Code-->
@@ -137,6 +137,22 @@
         <include refid="Base_Column_List"/>
         from student_info
         where id=#{id,jdbcType=VARCHAR}
+    </select>
+    <select id="findByTeamId" resultMap="BaseResultMap">
+        select si.id,
+               username,
+               name,
+               sex,
+               college,
+               major,
+               grade,
+               clazz,
+               phone,
+               email
+        from student_info si
+                 inner join attend_clazz ac on si.id = ac.id
+        where ac.team_id = #{teamId}
+
     </select>
 
 </mapper>

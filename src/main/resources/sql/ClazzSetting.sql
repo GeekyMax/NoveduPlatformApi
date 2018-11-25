@@ -5,8 +5,10 @@ CREATE TABLE clazz_setting (
   COMMENT '开课id',
   team_allowed          TINYINT(3)  NOT NULL DEFAULT 0
   COMMENT '是否允许组建小组',
-  max_team_number_count INT(11)     NOT NULL DEFAULT -1
+  max_team_member_count INT(11)     NOT NULL DEFAULT -1
   COMMENT '每小组人数上限',
+  max_team_count        INT(11)     NOT NULL DEFAULT -1
+  COMMENT '小组数量上限',
   INDEX (clazz_id),
   PRIMARY KEY (clazz_id),
   FOREIGN KEY (clazz_id) REFERENCES clazz (id)

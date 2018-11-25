@@ -14,6 +14,11 @@ public class TeachClazz {
      */
     private String clazzId;
 
+    public TeachClazz( String teacherId, String clazzId) {
+        this.teacherId = teacherId;
+        this.clazzId = clazzId;
+    }
+
     public String getId() {
         return id;
     }

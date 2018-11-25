@@ -11,7 +11,7 @@ CREATE TABLE clazz_environment (
   COMMENT '上课地点',
   INDEX (id),
   PRIMARY KEY (id),
-  FOREIGN KEY (clazz_id) REFERENCES clazz(id)
+  FOREIGN KEY (clazz_id) REFERENCES clazz (id)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4

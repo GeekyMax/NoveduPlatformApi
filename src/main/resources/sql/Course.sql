@@ -5,23 +5,23 @@ CREATE TABLE course (
   COMMENT '课程唯一id',
   name               VARCHAR(50)        NOT NULL
   COMMENT '课程名称',
-  textbook           VARCHAR(50)        NOT NULL DEFAULT ''
-  COMMENT '课程教材',
   code               VARCHAR(50) UNIQUE NOT NULL
   COMMENT '课程代码',
-  type               VARCHAR(50)        NOT NULL
+  textbook           VARCHAR(50)        NOT NULL DEFAULT '无'
+  COMMENT '课程教材',
+  type               VARCHAR(50)        NOT NULL DEFAULT ''
   COMMENT '课程种类',
-  year               VARCHAR(50)        NOT NULL
+  year               VARCHAR(50)        NOT NULL DEFAULT '长期'
   COMMENT '课程学年',
-  semester           VARCHAR(50)        NOT NULL
+  semester           VARCHAR(50)        NOT NULL DEFAULT ''
   COMMENT '课程学期',
-  english_name       VARCHAR(50)        NOT NULL
+  english_name       VARCHAR(50)        NOT NULL DEFAULT ''
   COMMENT '课程英文名',
   college            VARCHAR(50)        NOT NULL DEFAULT ''
   COMMENT '开课学院',
-  credit             DOUBLE(16, 4)      NOT NULL
+  credit             DOUBLE(16, 4)      NOT NULL DEFAULT '0'
   COMMENT '课程学分',
-  week_learning_time INT(11)            NOT NULL
+  week_learning_time INT(11)            NOT NULL DEFAULT '0'
   COMMENT '周学时',
   weight             VARCHAR(50)        NOT NULL DEFAULT ''
   COMMENT '权重',

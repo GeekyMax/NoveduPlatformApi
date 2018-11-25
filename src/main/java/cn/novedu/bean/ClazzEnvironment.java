@@ -24,6 +24,11 @@ public class ClazzEnvironment {
      */
     private String place;
 
+    public ClazzEnvironment(String time, String place) {
+        this.time = time;
+        this.place = place;
+    }
+
     public String getId() {
         return id;
     }

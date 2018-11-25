@@ -2,9 +2,10 @@ package cn.novedu.bean;
 
 /**
  * 学生参与课程
+ *
  * @author Max Huang
  */
-public class AttachClazz {
+public class AttendClazz {
     /**
      * 唯一id
      */
@@ -17,6 +18,10 @@ public class AttachClazz {
      * 班级id
      */
     private String clazzId;
+    /**
+     * 所加入的队伍
+     */
+    private String teamId;
 
     public String getId() {
         return id;
@@ -40,5 +45,13 @@ public class AttachClazz {
 
     public void setClazzId(String clazzId) {
         this.clazzId = clazzId;
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
     }
 }

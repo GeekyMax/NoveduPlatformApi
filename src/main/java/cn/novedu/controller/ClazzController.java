@@ -56,14 +56,14 @@ public class ClazzController {
         List<Clazz> clazzList = new ArrayList<>();
         if (userType == UserType.STUDENT) {
             StudentInfo studentInfo = studentService.findById(userId);
-            Clazz clazz = clazzService.findByStudentIdAndClazzId(userId, clazzId);
+            Clazz clazz = clazzService.findByClazzIdAndStudentId(clazzId, userId);
             if (clazz != null) {
                 clazzList.add(clazz);
                 return new Response().success(new ClassesResult(studentInfo, clazzList, userType));
             }
         } else if (userType == UserType.TEACHER) {
             TeacherInfo teacherInfo = teacherService.findById(userId);
-            Clazz clazz = clazzService.findByTeacherIdAndClazzId(userId, clazzId);
+            Clazz clazz = clazzService.findByClazzIdAndTeacherId(clazzId, userId);
             if (clazz != null) {
                 clazzList.add(clazz);
                 return new Response().success(new ClassesResult(teacherInfo, clazzList, userType));

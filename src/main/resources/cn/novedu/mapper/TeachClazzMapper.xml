@@ -17,6 +17,9 @@
 
     <!--auto generated Code-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="teachClazz.id">
+        <selectKey resultType="string" order="BEFORE" keyProperty="teachClazz.id">
+            select replace(uuid(),'-','') from dual;
+        </selectKey>
         INSERT INTO teach_clazz (
             id,
             teacher_id,
@@ -30,6 +33,9 @@
 
     <!--auto generated Code-->
     <insert id="insertSelective" useGeneratedKeys="true" keyProperty="teachClazz.id">
+        <selectKey resultType="string" order="BEFORE" keyProperty="teachClazz.id">
+            select replace(uuid(),'-','') from dual;
+        </selectKey>
         INSERT INTO teach_clazz
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="teachClazz.id!=null"> id,</if>

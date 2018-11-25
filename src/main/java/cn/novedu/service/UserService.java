@@ -56,9 +56,7 @@ public class UserService {
      */
     public String signup(String username, String name, String password, UserType userType) {
         try {
-            String id = idGenerator.generateId();
-            logger.debug("generated id is: " + id);
-            User user = new User(id, username, name, password, userType);
+            User user = new User(username, name, password, userType);
             int result = userMapper.insert(user);
             if (result != 1) {
                 return null;

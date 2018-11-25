@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+
 import cn.novedu.bean.TeacherInfo;
 
 @Mapper
@@ -15,6 +16,12 @@ public interface TeacherInfoMapper {
     int insertList(@Param("teacherInfos") List<TeacherInfo> teacherInfos);
 
     int updateByPrimaryKeySelective(@Param("teacherInfo") TeacherInfo teacherInfo);
-    TeacherInfo findById(@Param("id")String id);
+
+    TeacherInfo findById(@Param("id") String id);
+
     List<TeacherInfo> findByClazzId(@Param("clazzId") String clazzId);
+
+    TeacherInfo findByUsername(@Param("username") String username);
+
+
 }

@@ -22,5 +22,10 @@ public interface ClazzMapper {
     List<Clazz> find();
 
     List<Clazz> findByStudentId(@Param("studentId") String studentId);
+
     List<Clazz> findByTeacherId(@Param("teacherId") String teacherId);
+
+    Clazz findByClazzIdAndStudentId(@Param("clazzId") String clazzId, @Param("studentId") String studentId);
+
+    Clazz findByClazzIdAndTeacherId(@Param("clazzId") String clazzId, @Param("teacherId") String teacherId);
 }

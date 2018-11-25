@@ -4,13 +4,13 @@ CREATE TABLE user (
   id        VARCHAR(50)         NOT NULL
   COMMENT 'id',
   username  VARCHAR(50) UNIQUE  NOT NULL
-  COMMENT 'username',
+  COMMENT '用户学工号',
   name      VARCHAR(50)         NOT NULL
-  COMMENT 'name',
+  COMMENT '用户名',
   password  VARCHAR(50)         NOT NULL
-  COMMENT 'password',
+  COMMENT '密码',
   user_type VARCHAR(50)         NOT NULL DEFAULT 'STUDENT'
-  COMMENT 'userType',
+  COMMENT '用户类别',
   INDEX (id),
   INDEX (name),
   PRIMARY KEY (id)

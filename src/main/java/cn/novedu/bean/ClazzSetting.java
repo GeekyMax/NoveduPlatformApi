@@ -15,7 +15,25 @@ public class ClazzSetting {
     /**
      * 每小组人数上限
      */
-    private Integer maxTeamNumberCount;
+    private Integer maxTeamMemberCount;
+    /**
+     * 小组数量上限
+     */
+    private Integer maxTeamCount;
+
+    public ClazzSetting(String clazzId, Boolean teamAllowed, Integer maxTeamMemberCount, Integer maxTeamCount) {
+        this.clazzId = clazzId;
+        this.teamAllowed = teamAllowed;
+        this.maxTeamMemberCount = maxTeamMemberCount;
+        this.maxTeamCount = maxTeamCount;
+    }
+
+    public ClazzSetting(String clazzId) {
+        this.clazzId = clazzId;
+    }
+
+    public ClazzSetting() {
+    }
 
     public String getClazzId() {
         return clazzId;
@@ -33,11 +51,19 @@ public class ClazzSetting {
         this.teamAllowed = teamAllowed;
     }
 
-    public Integer getMaxTeamNumberCount() {
-        return maxTeamNumberCount;
+    public Integer getMaxTeamMemberCount() {
+        return maxTeamMemberCount;
     }
 
-    public void setMaxTeamNumberCount(Integer maxTeamNumberCount) {
-        this.maxTeamNumberCount = maxTeamNumberCount;
+    public void setMaxTeamMemberCount(Integer maxTeamMemberCount) {
+        this.maxTeamMemberCount = maxTeamMemberCount;
+    }
+
+    public Integer getMaxTeamCount() {
+        return maxTeamCount;
+    }
+
+    public void setMaxTeamCount(Integer maxTeamCount) {
+        this.maxTeamCount = maxTeamCount;
     }
 }

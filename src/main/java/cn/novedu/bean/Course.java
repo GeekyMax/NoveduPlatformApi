@@ -69,6 +69,24 @@ public class Course {
      */
     private String background;
 
+    public Course(String id, String name, String code) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+    }
+
+    public Course(String name, String code) {
+        this.name = name;
+        this.code = code;
+    }
+
+    public Course(String id) {
+        this.id = id;
+    }
+
+    public Course() {
+    }
+
     public String getId() {
         return id;
     }

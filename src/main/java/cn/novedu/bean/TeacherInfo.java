@@ -69,6 +69,23 @@ public class TeacherInfo {
      */
     private String email;
 
+    public TeacherInfo(String id, String username, String name) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+    }
+
+    /**
+     * 主要用于构建clazz的教师信息
+     * @param id
+     */
+    public TeacherInfo(String id) {
+        this.id = id;
+    }
+
+    public TeacherInfo() {
+    }
+
     public String getId() {
         return id;
     }

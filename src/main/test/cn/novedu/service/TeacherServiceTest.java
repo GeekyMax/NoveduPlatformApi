@@ -1,6 +1,5 @@
 package cn.novedu.service;
 
-import cn.novedu.bean.StudentInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,21 +18,16 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = {"classpath:application-context.xml", "classpath:spring-mvc.xml"})
 //@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 //@Transactional
-public class StudentServiceTest {
+public class TeacherServiceTest {
     @Autowired
-    private StudentService studentService;
-    private Logger logger = LoggerFactory.getLogger(StudentServiceTest.class);
+    private TeacherService teacherService;
+    private Logger logger = LoggerFactory.getLogger(TeacherServiceTest.class);
 
     @Test
-    public void findById() {
-
-    }
-
-    @Test
-    public void insertStudent() {
+    public void insertTeacher() {
         IntStream.range(10, 30).forEach(i -> {
             try {
-                String id = studentService.insertStudent("31601022" + i, "student" + i, "password");
+                String id = teacherService.insertTeacher("41601022" + i, "teacher" + i, "password");
                 logger.debug("result id for teacher" + i + ": " + id);
             } catch (Exception e) {
                 logger.error("error", e);

@@ -18,7 +18,7 @@ public interface StudentInfoMapper {
 
     StudentInfo findById(@Param("id")String id);
 
-
+    List<StudentInfo> findByTeamId(@Param("teamId")String teamId);
 
 
 }

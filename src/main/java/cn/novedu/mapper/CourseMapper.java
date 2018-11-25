@@ -18,5 +18,8 @@ public interface CourseMapper {
 
     Course findById(@Param("id")String id);
 
+    Course findByCode(@Param("code")String code);
+
+
 
 }
