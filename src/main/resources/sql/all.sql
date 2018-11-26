@@ -1,3 +1,15 @@
+DROP TABLE IF EXISTS team_request;
+DROP TABLE IF EXISTS team;
+DROP TABLE IF EXISTS teach_clazz;
+DROP TABLE IF EXISTS attend_clazz;
+DROP TABLE IF EXISTS clazz_setting;
+DROP TABLE IF EXISTS clazz_environment;
+DROP TABLE IF EXISTS clazz;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS teacher_info;
+DROP TABLE IF EXISTS student_info;
+DROP TABLE IF EXISTS user;
+
 -- 用户user数据表
 DROP TABLE IF EXISTS user;
 CREATE TABLE user (
