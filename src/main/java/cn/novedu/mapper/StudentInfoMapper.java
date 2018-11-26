@@ -20,5 +20,8 @@ public interface StudentInfoMapper {
 
     List<StudentInfo> findByTeamId(@Param("teamId")String teamId);
 
+    StudentInfo findByUsername(@Param("username")String username);
+
+
 
 }

@@ -23,6 +23,14 @@ public class AttendClazz {
      */
     private String teamId;
 
+    public AttendClazz(String studentId, String clazzId) {
+        this.studentId = studentId;
+        this.clazzId = clazzId;
+    }
+
+    public AttendClazz() {
+    }
+
     public String getId() {
         return id;
     }

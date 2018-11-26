@@ -28,4 +28,7 @@ public interface ClazzMapper {
     Clazz findByClazzIdAndStudentId(@Param("clazzId") String clazzId, @Param("studentId") String studentId);
 
     Clazz findByClazzIdAndTeacherId(@Param("clazzId") String clazzId, @Param("teacherId") String teacherId);
+    Integer countById(@Param("id")String id);
+
+
 }

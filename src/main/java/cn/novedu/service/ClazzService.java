@@ -1,5 +1,6 @@
 package cn.novedu.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.novedu.bean.*;
@@ -25,11 +26,15 @@ public class ClazzService {
     @Autowired
     private TeachClazzMapper teachClazzMapper;
     @Autowired
+    private AttendClazzMapper attendClazzMapper;
+    @Autowired
     private TeacherInfoMapper teacherInfoMapper;
     @Autowired
     private CourseMapper courseMapper;
     @Autowired
     IdGenerator idGenerator;
+    @Autowired
+    private StudentInfoMapper studentInfoMapper;
     Logger logger = LoggerFactory.getLogger(ClazzService.class);
 
     public List<Clazz> find() {
@@ -70,14 +75,14 @@ public class ClazzService {
      * @param clazz
      * @return
      */
-    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
     public void insert(Clazz clazz) {
         /*
          * 如果course为空.抛出异常
          */
         if (clazz.getCourse() == null) {
             logger.error("course can't be empty");
-            throw new RuntimeException();
+            throw new RuntimeException("course is empty");
         }
         /*
          * 如果course id为空,那么就试试用code找到course
@@ -86,11 +91,11 @@ public class ClazzService {
             if (clazz.getCourse().getCode() != null) {
                 Course course = courseMapper.findByCode(clazz.getCourse().getCode());
                 if (course == null) {
-                    throw new RuntimeException();
+                    throw new RuntimeException("course can't be found");
                 }
                 clazz.setCourse(course);
             } else {
-                throw new RuntimeException();
+                throw new RuntimeException("course no id and code");
             }
         }
         /*
@@ -98,49 +103,97 @@ public class ClazzService {
          */
         int clazzInsertResult = clazzMapper.insertSelective(clazz);
         if (clazzInsertResult != 1) {
-            throw new RuntimeException();
+            throw new RuntimeException("clazz insert fail");
         }
         String clazzId = clazz.getId();
         /*
          * 处理clazzSetting
          */
         ClazzSetting clazzSetting = clazz.getClazzSetting();
+        if (clazzSetting == null) {
+            throw new RuntimeException("clazzSetting is empty");
+        }
         clazzSetting.setClazzId(clazzId);
         int clazzSettingInsertResult = clazzSettingMapper.insertSelective(clazzSetting);
         if (clazzSettingInsertResult != 1) {
-            throw new RuntimeException();
+            throw new RuntimeException("clazzSetting insert fail");
         }
         /*
          * 插入clazzEnvironment
          */
         List<ClazzEnvironment> clazzEnvironmentList = clazz.getClazzEnvironments();
-        for (ClazzEnvironment clazzEnvironment : clazzEnvironmentList) {
-            clazzEnvironment.setClazzId(clazzId);
-            int clazzEnvironmentInsertResult = clazzEnvironmentMapper.insertSelective(clazzEnvironment);
-            if (clazzEnvironmentInsertResult != 1) {
-                throw new RuntimeException();
+        if (clazzEnvironmentList != null) {
+            for (ClazzEnvironment clazzEnvironment : clazzEnvironmentList) {
+                clazzEnvironment.setClazzId(clazzId);
+                int clazzEnvironmentInsertResult = clazzEnvironmentMapper.insertSelective(clazzEnvironment);
+                if (clazzEnvironmentInsertResult != 1) {
+                    throw new RuntimeException("clazz Environment insert fail");
+                }
             }
         }
-        for (TeacherInfo teacherInfo : clazz.getTeachers()) {
-            /*
-             * 如果没有没有教师id,那就试试教工号
-             */
-            if (teacherInfo.getId() == null) {
-                if (teacherInfo.getUsername() != null) {
-                    teacherInfo = teacherInfoMapper.findByUsername(teacherInfo.getUsername());
-                    if (teacherInfo == null) {
-                        throw new RuntimeException();
+        if (clazz.getTeachers() != null) {
+            for (TeacherInfo teacherInfo : clazz.getTeachers()) {
+                /*
+                 * 如果没有没有教师id,那就试试教工号
+                 */
+                if (teacherInfo.getId() == null) {
+                    if (teacherInfo.getUsername() != null) {
+                        teacherInfo = teacherInfoMapper.findByUsername(teacherInfo.getUsername());
+                        if (teacherInfo == null) {
+                            throw new RuntimeException("teacherInfo can't be found");
+                        }
+                    } else {
+                        throw new RuntimeException("teacherInfo no id and username");
                     }
-                } else {
-                    throw new RuntimeException();
+                }
+                TeachClazz teachClazz = new TeachClazz(teacherInfo.getId(), clazzId);
+                int teachClazzInsertResult = teachClazzMapper.insert(teachClazz);
+                if (teachClazzInsertResult != 1) {
+                    throw new RuntimeException("teachClazz insert fail");
                 }
             }
 
-            TeachClazz teachClazz = new TeachClazz(teacherInfo.getId(), clazzId);
-            int teachClazzInsertResult = teachClazzMapper.insert(teachClazz);
-            if (teachClazzInsertResult != 1) {
-                throw new RuntimeException();
-            }
         }
     }
+
+    /**
+     * 批量添加参与班级的学生
+     *
+     * @param studentList StudentInfo list
+     * @param clazzId     要插入的班级 id
+     * @return 成功插入的学生id
+     */
+    public List<String> importClazzStudents(List<StudentInfo> studentList, String clazzId) {
+        Integer clazzResult = clazzMapper.countById(clazzId);
+        List<String> list = new ArrayList<>();
+        if (studentList == null || clazzResult != 1) {
+            return list;
+        }
+        for (StudentInfo studentInfo : studentList) {
+            try {
+                /*
+                 * 如果没有id那就用username找一下
+                 */
+                if (studentInfo.getId() == null) {
+                    if (studentInfo.getUsername() != null) {
+                        StudentInfo newStudentInfo = studentInfoMapper.findByUsername(studentInfo.getUsername());
+                        if(newStudentInfo==null){
+                            continue;
+                        }
+                    } else {
+                        continue;
+                    }
+                }
+
+                int attendClazzInsertResult = attendClazzMapper.insert(new AttendClazz(studentInfo.getId(), clazzId));
+                if (attendClazzInsertResult == 1) {
+                    list.add(studentInfo.getId());
+                }
+            } catch (Exception e) {
+                logger.error("studentInfo error", e);
+            }
+        }
+        return list;
+    }
+
 }

@@ -47,6 +47,9 @@ public class Clazz {
         this.clazzSetting = clazzSetting;
     }
 
+    public Clazz() {
+    }
+
     public String getId() {
         return id;
     }
