@@ -21,6 +21,12 @@ public interface AttendClazzMapper {
     int updateByPrimaryKeySelective(@Param("attendClazz") AttendClazz attendClazz);
 
     Integer countByStudentIdAndClazzId(@Param("studentId") String studentId, @Param("clazzId") String clazzId);
+    Integer countByTeamId(@Param("teamId")String teamId);
+
+
+    int updateTeamIdByStudentIdAndClazzId(@Param("updatedTeamId")String updatedTeamId,@Param("studentId")String studentId,@Param("clazzId")String clazzId);
+
+    AttendClazz findByStudentIdAndClazzId(@Param("studentId")String studentId,@Param("clazzId")String clazzId);
 
 
 }

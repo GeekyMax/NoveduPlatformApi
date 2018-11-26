@@ -15,7 +15,7 @@ public interface ClazzSettingMapper {
     int insertList(@Param("clazzSettings") List<ClazzSetting> clazzSettings);
 
     int updateByPrimaryKeySelective(@Param("clazzSetting") ClazzSetting clazzSetting);
-    List<ClazzSetting> findByClazzId(@Param("clazzId")String clazzId);
+    ClazzSetting findByClazzId(@Param("clazzId")String clazzId);
 
 
 }

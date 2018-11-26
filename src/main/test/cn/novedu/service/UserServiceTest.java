@@ -11,6 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.IntStream;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,5 +36,16 @@ public class UserServiceTest {
         String id = userService.signup("3160102266", "max", "password", UserType.TEACHER);
         logger.debug(id);
         assertNotNull(id);
+    }
+
+    @Test
+    public void generateTokens() {
+        StringBuilder stringBuilder=new StringBuilder();
+        IntStream.range(10, 30).mapToObj(i -> "31601022" + i).forEach(s -> {
+            String token = userService.login(s, "password");
+            stringBuilder.append("TOKEN_MAP.put(\"" + s + "\",\"" + token + "\");\n");
+            System.out.println("TOKEN_MAP.put(\"" + s + "\",\"" + token + "\");\n");
+        });
+        System.out.println(stringBuilder.toString());
     }
 }

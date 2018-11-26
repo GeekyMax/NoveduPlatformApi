@@ -1,8 +1,17 @@
 package cn.novedu.bean;
 
+import cn.novedu.validation.MaxLength;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Max Huang
+ */
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 public class Team {
     /**
      * 队伍 id
@@ -11,18 +20,22 @@ public class Team {
     /**
      * 队伍名称
      */
+    @NotNull
     private String name;
     /**
      * 队伍描述
      */
+    @MaxLength(value = 50)
     private String description;
     /**
      * 所属班级id
      */
+    @NotNull
     private String clazzId;
     /**
      * 队长
      */
+    @NotNull
     private StudentInfo leader;
     /**
      * 成员列表
@@ -36,6 +49,16 @@ public class Team {
      * 创建时间
      */
     private Date createTime;
+
+    public Team(String name, String description, String clazzId, StudentInfo leader) {
+        this.name = name;
+        this.description = description;
+        this.clazzId = clazzId;
+        this.leader = leader;
+    }
+
+    public Team() {
+    }
 
     public String getId() {
         return id;

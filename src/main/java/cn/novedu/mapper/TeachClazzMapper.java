@@ -23,5 +23,4 @@ public interface TeachClazzMapper {
     Integer countByTeacherIdAndClazzId(@Param("teacherId")String teacherId,@Param("clazzId")String clazzId);
 
 
-
 }

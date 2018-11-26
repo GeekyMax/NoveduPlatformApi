@@ -188,6 +188,23 @@ public class ClazzServiceTest {
             logger.debug(s);
         });
         assertEquals(0, idList.size());
-
     }
+
+    /**
+     * 测试插入学生,全部正确
+     */
+    @Test
+    @Rollback(false)
+    public void importClazzStudents1() {
+        List<StudentInfo> studentList = new ArrayList<>();
+        IntStream.range(10, 20).mapToObj(i -> "31601022" + i).forEach(s -> {
+            studentList.add(new StudentInfo(null, s, null));
+        });
+        List<String> idList = clazzService.importClazzStudents(studentList, "dab933a5f12611e8b5b102004c4f4f50");
+        idList.forEach(s -> {
+            logger.debug(s);
+        });
+        assertEquals(studentList.size(), idList.size());
+    }
+
 }

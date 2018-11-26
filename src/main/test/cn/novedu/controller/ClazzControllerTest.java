@@ -53,7 +53,7 @@ public class ClazzControllerTest {
      */
     @Test
     public void classes() throws Exception {
-        mockMvc.perform(get("/classes").header("X-NOV-TOKEN", Constant.STUDENT_TOKEN)
+        mockMvc.perform(get("/classes").header("X-NOV-TOKEN", Constant.TOKEN_MAP.get("3160102220"))
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.meta.success").value(true))
                 .andDo(print());

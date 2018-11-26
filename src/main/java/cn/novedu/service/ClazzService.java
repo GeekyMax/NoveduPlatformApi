@@ -177,15 +177,15 @@ public class ClazzService {
                 if (studentInfo.getId() == null) {
                     if (studentInfo.getUsername() != null) {
                         StudentInfo newStudentInfo = studentInfoMapper.findByUsername(studentInfo.getUsername());
-                        if(newStudentInfo==null){
-                            continue;
+                        if (newStudentInfo != null) {
+                            studentInfo = newStudentInfo;
                         }
-                    } else {
-                        continue;
                     }
                 }
-
-                int attendClazzInsertResult = attendClazzMapper.insert(new AttendClazz(studentInfo.getId(), clazzId));
+                if (studentInfo.getId() == null) {
+                    continue;
+                }
+                int attendClazzInsertResult = attendClazzMapper.insertSelective(new AttendClazz(studentInfo.getId(), clazzId));
                 if (attendClazzInsertResult == 1) {
                     list.add(studentInfo.getId());
                 }

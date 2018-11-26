@@ -15,20 +15,5 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="novedu@120.77.38.27" uuid="0e6007a3-a9ed-4cdd-86e6-c26a2d9c0731">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <remarks>阿里云上的mysql</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://120.77.38.27:3306/novedu?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-    </data-source>
   </component>
 </project>

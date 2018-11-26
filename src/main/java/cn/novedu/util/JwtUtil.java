@@ -22,7 +22,7 @@ import java.util.Map;
 @Component
 public class JwtUtil {
     public static final String JWT_SECRET = "7786df7fc3a34e26a61c034d5ec8245d";
-    public static final long TTL_MILLIS = 365 * 24 * 60 * 60 * 1000;
+    public static final long TTL_MILLIS = 30 * 24 * 60 * 60 * 1000;
     private Logger logger = LoggerFactory.getLogger(JwtUtil.class);
     @Autowired
     UserMapper userMapper;
