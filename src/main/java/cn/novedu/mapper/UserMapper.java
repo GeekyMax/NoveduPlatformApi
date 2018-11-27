@@ -1,5 +1,6 @@
 package cn.novedu.mapper;
 
+import cn.novedu.bean.UserInfo;
 import cn.novedu.constant.UserType;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -23,5 +24,5 @@ public interface UserMapper {
 
     UserType findUserTypeById(@Param("id") String id);
 
-
+    UserInfo findUserInfoById(String id);
 }

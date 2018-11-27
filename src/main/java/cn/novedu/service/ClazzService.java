@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.novedu.bean.*;
+import cn.novedu.constant.UserType;
 import cn.novedu.jdbc.id.IdGenerator;
 import cn.novedu.mapper.*;
 import org.apache.ibatis.annotations.Param;
@@ -35,6 +36,8 @@ public class ClazzService {
     IdGenerator idGenerator;
     @Autowired
     private StudentInfoMapper studentInfoMapper;
+    @Autowired
+    private UserMapper userMapper;
     Logger logger = LoggerFactory.getLogger(ClazzService.class);
 
     public List<Clazz> find() {
@@ -50,23 +53,22 @@ public class ClazzService {
     }
 
     public Clazz findByClazzIdAndStudentId(String clazzId, String studentId) {
-//        Integer count = attendClazzMapper.countByStudentIdAndClazzId(studentId, clazzId);
-//        if (count != null && count > 0) {
-//            return clazzMapper.findById(clazzId);
-//        } else {
-//            return null;
-//        }
         return clazzMapper.findByClazzIdAndStudentId(clazzId, studentId);
     }
 
     public Clazz findByClazzIdAndTeacherId(String clazzId, String teacherId) {
-//        Integer count = teachClazzMapper.countByTeacherIdAndClazzId(teacherId, clazzId);
-//        if (count != null && count > 0) {
-//            return clazzMapper.findById(clazzId);
-//        } else {
-//            return null;
-//        }
         return clazzMapper.findByClazzIdAndTeacherId(clazzId, teacherId);
+    }
+
+    public Clazz findByClazzIdAndUserId(String clazzId, String userId) {
+        UserType userType = userMapper.findUserTypeById(userId);
+        if(userType==null){
+            return null;
+        }else if(userType==UserType.STUDENT){
+            return findByClazzIdAndStudentId(clazzId,userId);
+        }else{
+            return findByClazzIdAndTeacherId(clazzId,userId);
+        }
     }
 
     /**

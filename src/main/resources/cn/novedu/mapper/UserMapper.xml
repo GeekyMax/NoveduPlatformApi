@@ -7,8 +7,7 @@
         <result column="username" property="username" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
-        <result column="user_type" property="userType" jdbcType="VARCHAR"
-                typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        <result column="user_type" property="userType" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -107,5 +106,10 @@
         select user_type
         from user
         where id = #{id,jdbcType=VARCHAR}</select>
+    <select id="findUserInfoById" resultType="cn.novedu.bean.UserInfo">
+        select id, username, name
+        from user
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
 </mapper>
 

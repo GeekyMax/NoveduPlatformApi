@@ -29,6 +29,9 @@ public class ClazzEnvironment {
         this.place = place;
     }
 
+    public ClazzEnvironment() {
+    }
+
     public String getId() {
         return id;
     }

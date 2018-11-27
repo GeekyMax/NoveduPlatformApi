@@ -48,19 +48,21 @@ public class ClazzServiceTest {
             });
         });
     }
-
     /**
      * 合法插入
      */
     @Test
+    @Rollback(false)
     public void insert11() {
         List<ClazzEnvironment> clazzEnvironmentList = IntStream.range(0, 2).mapToObj(i -> new ClazzEnvironment("周四" + i, "教四-10" + i)).collect(Collectors.toList());
         List<TeacherInfo> teacherInfoList = new ArrayList<>();
-        teacherInfoList.add(new TeacherInfo("2e0705029e8a4f72ab4f4d32c2ea4b5d"));
-        teacherInfoList.add(new TeacherInfo("19b4dd6fa3fa4153b727bb20ecc6ed7e"));
+        teacherInfoList.add(new TeacherInfo("6759be4af18d11e8973400163e043b02"));
+        teacherInfoList.add(new TeacherInfo("67a88625f18d11e8973400163e043b02"));
         ClazzSetting clazzSetting = new ClazzSetting();
-        Clazz clazz = new Clazz("T(2018-2019)-COURSE1-1", new Course("668b08aef0be11e8b5b102004c4f4f50"), teacherInfoList, clazzEnvironmentList, clazzSetting);
+        Clazz clazz = new Clazz("T(2018-2019)-COURSE1-1", new Course("88ea12bbf18d11e8973400163e043b02"), teacherInfoList, clazzEnvironmentList, clazzSetting);
         clazzService.insert(clazz);
+        Clazz clazz2 = new Clazz("T(2018-2019)-COURSE1-2", new Course("88ea12bbf18d11e8973400163e043b02"), teacherInfoList, clazzEnvironmentList, clazzSetting);
+        clazzService.insert(clazz2);
     }
 
     /**
@@ -200,7 +202,7 @@ public class ClazzServiceTest {
         IntStream.range(10, 20).mapToObj(i -> "31601022" + i).forEach(s -> {
             studentList.add(new StudentInfo(null, s, null));
         });
-        List<String> idList = clazzService.importClazzStudents(studentList, "dab933a5f12611e8b5b102004c4f4f50");
+        List<String> idList = clazzService.importClazzStudents(studentList, "02fd3297f18e11e8973400163e043b02");
         idList.forEach(s -> {
             logger.debug(s);
         });

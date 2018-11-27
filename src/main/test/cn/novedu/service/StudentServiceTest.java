@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -17,8 +18,8 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:application-context.xml", "classpath:spring-mvc.xml"})
-//@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-//@Transactional
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@Transactional
 public class StudentServiceTest {
     @Autowired
     private StudentService studentService;
@@ -30,6 +31,7 @@ public class StudentServiceTest {
     }
 
     @Test
+    @Rollback(false)
     public void insertStudent() {
         IntStream.range(10, 30).forEach(i -> {
             try {

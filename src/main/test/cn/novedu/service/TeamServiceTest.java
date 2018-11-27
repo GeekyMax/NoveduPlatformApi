@@ -33,7 +33,7 @@ public class TeamServiceTest {
     @Test
     @Rollback(false)
     public void createTeam11() {
-        String id = teamService.createTeam("team1", "no description", "b7b709b5f12611e8b5b102004c4f4f50", "88428f02863b48a78699c54ed29b40d3");
+        String id = teamService.createTeam("team1", "no description", "02fd3297f18e11e8973400163e043b02", "56969bc9f18d11e8973400163e043b02");
         logger.debug("team id:" + id);
         assertNotNull(id);
     }
@@ -41,7 +41,7 @@ public class TeamServiceTest {
     @Test
     @Rollback(false)
     public void createTeam12() {
-        String id = teamService.createTeam("team2", "no description", "b7b709b5f12611e8b5b102004c4f4f50", "85d21680d47b46dcb3712359c0d400cc");
+        String id = teamService.createTeam("team2", "no description", "02fd3297f18e11e8973400163e043b02", "56c235a2f18d11e8973400163e043b02");
         logger.debug("team id:" + id);
         assertNotNull(id);
     }

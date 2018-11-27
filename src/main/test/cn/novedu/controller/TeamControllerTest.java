@@ -43,7 +43,7 @@ public class TeamControllerTest {
     private MockMvc mockMvc;
     private Gson gson = new Gson();
     private Logger logger = LoggerFactory.getLogger(TeamControllerTest.class);
-    private String clazzId = "b7b709b5f12611e8b5b102004c4f4f50";
+    private String clazzId = "02fd3297f18e11e8973400163e043b02";
 
     @Before
     public void setUp() throws Exception {
@@ -108,7 +108,7 @@ public class TeamControllerTest {
     @Test
     @Rollback(false)
     public void postTeamRequests() throws Exception {
-        String teamId = "7a6f26bbf14911e8b5b102004c4f4f50";
+        String teamId = "9302f6d3f18e11e8973400163e043b02";
         mockMvc.perform(post("/classes/" + clazzId + "/teams/" + teamId + "/request").header(TOKEN_NAME, TOKEN_MAP.get("3160102212"))
                 .accept(APPLICATION_JSON_UTF8)
                 .contentType(APPLICATION_JSON_UTF8))

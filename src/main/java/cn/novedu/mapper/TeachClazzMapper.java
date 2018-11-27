@@ -22,5 +22,5 @@ public interface TeachClazzMapper {
 
     Integer countByTeacherIdAndClazzId(@Param("teacherId")String teacherId,@Param("clazzId")String clazzId);
 
-
+    Boolean judgeTeacherInClazz(@Param("teacherId") String teacherId, @Param("clazzId") String clazzId);
 }

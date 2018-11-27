@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 </head>
 <body>
+<div id="text-view"></div>
 username: <input id="username" type="text"/>
 <br/>
 password: <input id="password" type="password">
@@ -25,7 +26,8 @@ password: <input id="password" type="password">
                 success: function (data) {
                     console.log(data);
                     if (data && data.meta && data.meta.success) {
-                        $.cookie("x-nov-token",data.data.token);
+                        $.cookie("x-nov-token", data.data.token);
+                        $("#text-view").text(data);
                     }
                 }
             })

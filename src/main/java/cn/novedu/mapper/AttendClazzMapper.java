@@ -21,12 +21,18 @@ public interface AttendClazzMapper {
     int updateByPrimaryKeySelective(@Param("attendClazz") AttendClazz attendClazz);
 
     Integer countByStudentIdAndClazzId(@Param("studentId") String studentId, @Param("clazzId") String clazzId);
-    Integer countByTeamId(@Param("teamId")String teamId);
+
+    Boolean judgeStudentInClazz(@Param("studentId") String studentId, @Param("clazzId") String clazzId);
+
+    Integer countByTeamId(@Param("teamId") String teamId);
+
+    Integer countByStudentIdAndClazzIdAndTeamId(@Param("studentId") String studentId, @Param("clazzId") String clazzId, @Param("teamId") String teamId);
+
+    Boolean existByStudentIdAndTeamId(@Param("studentId") String studentId, @Param("teamId") String teamId);
 
 
-    int updateTeamIdByStudentIdAndClazzId(@Param("updatedTeamId")String updatedTeamId,@Param("studentId")String studentId,@Param("clazzId")String clazzId);
+    int updateTeamIdByStudentIdAndClazzId(@Param("updatedTeamId") String updatedTeamId, @Param("studentId") String studentId, @Param("clazzId") String clazzId);
 
-    AttendClazz findByStudentIdAndClazzId(@Param("studentId")String studentId,@Param("clazzId")String clazzId);
-
+    AttendClazz findByStudentIdAndClazzId(@Param("studentId") String studentId, @Param("clazzId") String clazzId);
 
 }

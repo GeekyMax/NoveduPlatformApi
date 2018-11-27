@@ -2,8 +2,8 @@ package cn.novedu.advice;
 
 import cn.novedu.bean.Response;
 import cn.novedu.security.PermissionException;
+import cn.novedu.security.ServiceException;
 import cn.novedu.security.TokenException;
-import com.google.protobuf.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -136,15 +136,17 @@ public class ExceptionAdvice {
         logger.error("不支持当前媒体类型", e);
         return new Response().failure(415, "content_type_not_supported");
     }
+
     /**
      * 404 - Not Found
      */
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(PermissionException.class)
-    public Response handlePermissionException(PermissionException e){
+    public Response handlePermissionException(PermissionException e) {
         logger.error("没有权限,拒绝访问", e);
         return new Response().failure(500, e.getMessage());
     }
+
     /**
      * 500 - Internal Server Error
      */
