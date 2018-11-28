@@ -1,23 +1,29 @@
 package cn.novedu.param;
 
+import javax.validation.constraints.NotNull;
+
 public class PostReplyParam {
     /**
      * 回帖内容
      */
+    @NotNull
     private String content;
     /**
      * 回帖用户id
      */
+    @NotNull
     private String userId;
     /**
      * 主帖id
      */
+    @NotNull
     private String postId;
 
     /**
      * 引用的回帖的id
      */
     private String referenceId;
+
     public PostReplyParam() {
     }
 

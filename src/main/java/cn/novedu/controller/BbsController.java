@@ -4,8 +4,10 @@ import cn.novedu.bean.*;
 import cn.novedu.constant.Constant;
 import cn.novedu.param.PostParam;
 import cn.novedu.param.PostReplyParam;
+import cn.novedu.param.ReplyCommentParam;
 import cn.novedu.result.AllPostResult;
 import cn.novedu.result.PostResult;
+import cn.novedu.security.PermissionException;
 import cn.novedu.service.ClazzService;
 import cn.novedu.service.PostService;
 import cn.novedu.service.UserService;
@@ -14,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -39,8 +42,8 @@ public class BbsController {
         return new Response().success(allPostResult);
     }
 
-    @RequestMapping(value = "/bbs/{bbs-id}/posts/{post-id}", method = RequestMethod.GET)
-    public Response getPostsById(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("bbs-id") String bbsId, @PathVariable("post-id") String postid) {
+    @RequestMapping(value = "/posts/{post-id}", method = RequestMethod.GET)
+    public Response getPostsById(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("post-id") String postid) {
         String userId = userService.getUserId(token);
         PostResult postResult = postService.getPostById(userId, postid);
         if (postResult != null) {
@@ -66,10 +69,10 @@ public class BbsController {
     }
 
     @RequestMapping(value = "/posts/{post-id}/replies", method = RequestMethod.POST)
-    public Response postReplies(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("post-id") String postId, @RequestBody PostReplyParam postReplyParam){
+    public Response postReplies(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("post-id") String postId, @Valid @RequestBody PostReplyParam postReplyParam) {
         String userId = userService.getUserId(token);
         if (!userId.equals(postReplyParam.getUserId())) {
-            return new Response().failure();
+            throw new PermissionException();
         }
         PostReply postReply = postService.insertPostReply(postReplyParam);
 
@@ -80,4 +83,17 @@ public class BbsController {
         }
     }
 
+    @RequestMapping(value = "/replies/{reply-id}/comments", method = RequestMethod.POST)
+    public Response postReplyComments(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("reply-id") String replyId, @Valid @RequestBody ReplyCommentParam replyCommentParam) {
+        String userId = userService.getUserId(token);
+        if (!userId.equals(replyCommentParam.getUserId())) {
+            throw new PermissionException();
+        }
+        ReplyComment replyComment = postService.insertReplyComment(replyCommentParam);
+        if (replyComment != null) {
+            return new Response().success(replyComment);
+        } else {
+            return new Response().failure();
+        }
+    }
 }

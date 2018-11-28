@@ -4,6 +4,7 @@ import cn.novedu.constant.Constant;
 import cn.novedu.constant.PostPermission;
 import cn.novedu.param.PostParam;
 import cn.novedu.param.PostReplyParam;
+import cn.novedu.param.ReplyCommentParam;
 import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
@@ -92,6 +93,21 @@ public class BbsControllerTest {
         PostReplyParam postReplyParam = new PostReplyParam(content, userId, postId, referenceId);
         content = gson.toJson(postReplyParam);
         mockMvc.perform(post("/bbs/" + clazzId + "/posts/" + postId + "/replies").header(Constant.TOKEN_NAME, Constant.TOKEN_MAP.get("3160102211"))
+                .accept(APPLICATION_JSON_UTF8)
+                .contentType(APPLICATION_JSON_UTF8)
+                .content(content))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void postReplyComments() throws Exception {
+        String content = "this is a comment";
+        String userId = "56c235a2f18d11e8973400163e043b02";
+        String replyId = "1ef989f4f23811e8973400163e043b02";
+        ReplyCommentParam replyCommentParam = new ReplyCommentParam(content, replyId, userId);
+        content = gson.toJson(replyCommentParam);
+        mockMvc.perform(post("/replies/" + replyId + "/comments").header(Constant.TOKEN_NAME, Constant.TOKEN_MAP.get("3160102211"))
                 .accept(APPLICATION_JSON_UTF8)
                 .contentType(APPLICATION_JSON_UTF8)
                 .content(content))

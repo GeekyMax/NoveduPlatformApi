@@ -1,8 +1,16 @@
 package cn.novedu.param;
 
+import javax.validation.constraints.NotNull;
+
+/**
+ * @author Max Huang
+ */
 public class ReplyCommentParam {
+    @NotNull
     private String content;
+    @NotNull
     private String replyId;
+    @NotNull
     private String userId;
 
     public ReplyCommentParam(String content, String replyId, String userId) {
