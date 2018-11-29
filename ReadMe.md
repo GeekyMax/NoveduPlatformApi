@@ -82,14 +82,16 @@ novedu.cn/api/v1/
   - /api/classes/:id/teams/:id/request/handler POST 处理请求信息
 - 课程论坛
   - /api/bbs/:id/posts GET 获取所有帖子信息(支持过滤信息)
-  - /api/bbs/:id/posts/:id GET 获取指定帖子信息
+  - /api/posts/:id GET 获取指定帖子信息
   - /api/bbs/:id/posts POST 发布帖子
-  - /api/bbs/:id/posts/:id PUT 修改帖子(内容,权限)
-  - /api/bbs/:id/posts/:id DELETE 删除帖子
-  - /api/bbs/:id/posts/:id/replies GET 获取所有帖子回复(支持过滤信息)
-  - /api/bbs/:id/posts/:id/replies POST 发布回帖
-  - /api/bbs/:id/posts/:id/replies/:reply_id DELETE 删除回帖
-  - /api/replies/:reply-id/comments GET 回复回帖
+  - /api/posts/:id PUT 修改帖子(内容,权限)
+  - /api/posts/:id DELETE 删除帖子
+  - /api/posts/:id/replies GET 获取所有帖子回复(支持过滤信息)
+  - /api/posts/:id/replies POST 发布回帖
+  - /api/replies/:reply_id DELETE 删除回帖
+  - /api/replies/:reply-id/comments GET 获得评论
+  - /api/replies/:reply-id/comments POST 发布评论
+  - /api/comments/:comment-id DELETE 删除评论
   - /api/bbs/:id POST 修改论坛设置
   - /api/bbs/:id/query?q=xxx GET 搜索主题帖(支持过滤信息)
 - 课程资料
