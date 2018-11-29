@@ -35,13 +35,6 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="novedu: schema" type="c314c289:MysqlImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="novedu@120.77.38.27" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="novedu: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="post_setting: table" type="98d5ac3d:MysqlImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -49,9 +42,11 @@
     <session id="-1608795736">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -77,11 +72,12 @@
           <entry key="sql" value="5" />
           <entry key="student_info" value="1" />
           <entry key="team" value="1" />
+          <entry key="user" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Database Element" value="6" />
+          <entry key="Database Element" value="7" />
           <entry key="SQL" value="4" />
           <entry key="Scratch" value="1" />
         </counts>
@@ -89,8 +85,8 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/post">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
@@ -100,7 +96,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/post_reply">
+        <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/user">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
@@ -118,15 +114,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/team">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/student_info">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
@@ -147,10 +134,10 @@
     </leaf>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="240" />
-    <option name="y" value="130" />
-    <option name="width" value="1440" />
-    <option name="height" value="780" />
+    <option name="x" value="160" />
+    <option name="y" value="86" />
+    <option name="width" value="960" />
+    <option name="height" value="520" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -341,16 +328,16 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" weight="0.15671642" />
-      <window_info content_ui="combo" id="Database" order="2" visible="true" weight="0.1369936" />
-      <window_info active="true" anchor="bottom" id="Database Console" visible="true" weight="0.3296582" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info content_ui="combo" id="Database" order="2" visible="true" weight="0.16364606" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info active="true" anchor="bottom" id="Database Console" order="5" visible="true" weight="0.22932746" />
+      <window_info anchor="bottom" id="Database Changes" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Structure" order="0" side_tool="true" weight="0.25" />
     </layout>
   </component>
@@ -370,21 +357,7 @@
     <entry file="file://$PROJECT_DIR$/Post.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/reply_comment">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/post">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/post_setting">
+    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/team">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -398,7 +371,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/team">
+    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/post_setting">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -406,6 +379,27 @@
       </provider>
     </entry>
     <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/student_info">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/reply_comment">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://52a6c670-777c-4d13-bd09-3be7bb200d71/schema/novedu/table/post">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />

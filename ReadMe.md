@@ -104,7 +104,18 @@ novedu.cn/api/v1/
   - /api/messages/:id DELETE 删除消息
   - 
 
-## Ⅴ api请求详细
+## Ⅴ过滤信息
+
+```
+?limit=10：指定返回记录的数量
+?offset=10：指定返回记录的开始位置。
+?page=2&per_page=100：指定第几页，以及每页的记录数。
+?orderby=name&order=asc：指定返回结果按照哪个属性排序，以及排序顺序。
+```
+
+
+
+## Ⅵ api请求详细
 
 ### 用户相关
 

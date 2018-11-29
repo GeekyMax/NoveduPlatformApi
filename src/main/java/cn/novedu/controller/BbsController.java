@@ -2,6 +2,8 @@ package cn.novedu.controller;
 
 import cn.novedu.bean.*;
 import cn.novedu.constant.Constant;
+import cn.novedu.jdbc.paging.PagingManager;
+import cn.novedu.param.PagingParam;
 import cn.novedu.param.PostParam;
 import cn.novedu.param.PostReplyParam;
 import cn.novedu.param.ReplyCommentParam;
@@ -9,14 +11,16 @@ import cn.novedu.result.AllPostResult;
 import cn.novedu.result.PostResult;
 import cn.novedu.security.PermissionException;
 import cn.novedu.service.ClazzService;
-import cn.novedu.service.PostService;
+import cn.novedu.service.BbsService;
 import cn.novedu.service.UserService;
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,29 +29,173 @@ import java.util.List;
 @RestController
 public class BbsController {
     @Autowired
-    private PostService postService;
+    private BbsService bbaService;
     @Autowired
     private UserService userService;
     @Autowired
     private ClazzService clazzService;
+    @Autowired
+    private PagingManager pagingManager;
+    Gson gson = new Gson();
     private Logger logger = LoggerFactory.getLogger(BbsController.class);
 
+    /**
+     * 查询本班级的所有posts.
+     * 返回三部分内容:
+     * 1.clazz信息
+     * 2.所有权限为ALL的帖子(scope=TEAM时不返回
+     * 3.小组内可见的帖子(scope=ALL时不返回
+     * 支持条件查询(page,per_page,order,sort),但是建议在使用条件查询时,使用scope参数限定返回ALL或是TEAM的posts
+     *
+     * @param token
+     * @param bbsId
+     * @param pageNum
+     * @param pageSize
+     * @param order
+     * @param sort
+     * @return
+     */
     @RequestMapping(value = "/bbs/{bbs-id}/posts", method = RequestMethod.GET)
-    public Response getPosts(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("bbs-id") String bbsId) {
+    public Response getPosts(
+            @RequestHeader(Constant.TOKEN_NAME) String token,
+            @PathVariable("bbs-id") String bbsId,
+            @RequestParam("scope") String scope,
+            @RequestParam(value = "page", defaultValue = "0") int pageNum,
+            @RequestParam(value = "per_page", defaultValue = "0") int pageSize,
+            @RequestParam(value = "order", defaultValue = "desc") String order,
+            @RequestParam(value = "sort", defaultValue = "post_time") String sort
+    ) {
         String userId = userService.getUserId(token);
-        List<Post> allPosts = postService.getAllPostByClazzId(userId, bbsId);
-        List<Post> teamPosts = postService.getTeamPostByClazzId(userId, bbsId);
+        String orderBy = pagingManager.handleOrderBy("post", sort, order);
+        if (orderBy == null) {
+            orderBy = "post_time asc";
+        }
+        PagingParam pagingParam = new PagingParam(pageNum, pageSize, orderBy);
+        logger.debug(gson.toJson(pagingParam));
+        List<Post> allPosts = new ArrayList<>();
+        List<Post> teamPosts = new ArrayList<>();
+        if (scope == null) {
+            allPosts = bbaService.getAllPostByClazzId(userId, bbsId, pagingParam);
+            teamPosts = bbaService.getTeamPostByClazzId(userId, bbsId, pagingParam);
+        } else if ("team".equals(scope.trim().toLowerCase())) {
+            teamPosts = bbaService.getTeamPostByClazzId(userId, bbsId, pagingParam);
+        } else if ("all".equals(scope.trim().toLowerCase())) {
+            allPosts = bbaService.getAllPostByClazzId(userId, bbsId, pagingParam);
+        } else {
+            allPosts = bbaService.getAllPostByClazzId(userId, bbsId, pagingParam);
+            teamPosts = bbaService.getTeamPostByClazzId(userId, bbsId, pagingParam);
+        }
         Clazz clazz = clazzService.findByClazzIdAndUserId(bbsId, userId);
         AllPostResult allPostResult = new AllPostResult(clazz, allPosts, teamPosts);
         return new Response().success(allPostResult);
     }
 
+    /**
+     * 根据postId返回post信息,支持对于评论信息的过滤
+     * 默认返回所有的reply
+     * 每个reply附带最多10条的reply comment
+     * 更多的reply comment 请调用 replies/:id/comments
+     *
+     * @param token
+     * @param postId
+     * @param withReplies 是否返回评论列表
+     * @param pageNum
+     * @param pageSize
+     * @param order
+     * @param sort
+     * @return
+     */
     @RequestMapping(value = "/posts/{post-id}", method = RequestMethod.GET)
-    public Response getPostsById(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("post-id") String postid) {
+    public Response getPostsById(
+            @RequestHeader(Constant.TOKEN_NAME) String token,
+            @PathVariable("post-id") String postId,
+            @RequestParam(value = "with_replies", defaultValue = "true") boolean withReplies,
+            @RequestParam(value = "page", defaultValue = "0") int pageNum,
+            @RequestParam(value = "per_page", defaultValue = "0") int pageSize,
+            @RequestParam(value = "order", defaultValue = "reply_time") String order,
+            @RequestParam(value = "sort", defaultValue = "asc") String sort
+    ) {
         String userId = userService.getUserId(token);
-        PostResult postResult = postService.getPostById(userId, postid);
+        String orderBy = pagingManager.handleOrderBy("post", sort, order);
+        if (orderBy == null) {
+            orderBy = "reply_time asc";
+        }
+        PagingParam pagingParam = new PagingParam(pageNum, pageSize, orderBy);
+        PostResult postResult = bbaService.getPostById(userId, postId, withReplies, pagingParam);
         if (postResult != null) {
             return new Response().success(postResult);
+        } else {
+            return new Response().failure();
+        }
+    }
+
+    /**
+     * 返回指定post的回帖列表replyList,支持信息过滤
+     * 默认返回所有replies
+     * 每个reply最多带10条comment
+     * 更多的reply comment 请调用 replies/:id/comments
+     *
+     * @param token
+     * @param postId
+     * @param pageNum
+     * @param pageSize
+     * @param order
+     * @param sort
+     * @return
+     */
+    @RequestMapping(value = "/post/{post-id}/replies", method = RequestMethod.GET)
+    public Response getReplies(
+            @RequestHeader(Constant.TOKEN_NAME) String token,
+            @PathVariable("post-id") String postId,
+            @RequestParam(value = "page", defaultValue = "0") int pageNum,
+            @RequestParam(value = "per_page", defaultValue = "0") int pageSize,
+            @RequestParam(value = "order", defaultValue = "reply_time") String order,
+            @RequestParam(value = "sort", defaultValue = "asc") String sort
+    ) {
+        String userId = userService.getUserId(token);
+        String orderBy = pagingManager.handleOrderBy("post", sort, order);
+        if (orderBy == null) {
+            orderBy = "reply_time asc";
+        }
+        PagingParam pagingParam = new PagingParam(pageNum, pageSize, orderBy);
+        List<PostReply> postReplies = bbaService.getReplies(userId, postId, pagingParam);
+        if (postReplies != null) {
+            return new Response().success(postReplies);
+        } else {
+            return new Response().failure();
+        }
+    }
+
+    /**
+     * 查询指定reply的comments
+     * 支持条件查询,默认返回所有的comments
+     *
+     * @param token
+     * @param replyId
+     * @param pageNum
+     * @param pageSize
+     * @param order
+     * @param sort
+     * @return
+     */
+    @RequestMapping(value = "/replies/{reply-id}/comments", method = RequestMethod.GET)
+    public Response getComments(
+            @RequestHeader(Constant.TOKEN_NAME) String token,
+            @PathVariable("reply-id") String replyId,
+            @RequestParam(value = "page", defaultValue = "0") int pageNum,
+            @RequestParam(value = "per_page", defaultValue = "0") int pageSize,
+            @RequestParam(value = "order", defaultValue = "comment_time") String order,
+            @RequestParam(value = "sort", defaultValue = "asc") String sort
+    ) {
+        String userId = userService.getUserId(token);
+        String orderBy = pagingManager.handleOrderBy("post", sort, order);
+        if (orderBy == null) {
+            orderBy = "comment_time asc";
+        }
+        PagingParam pagingParam = new PagingParam(pageNum, pageSize, orderBy);
+        List<ReplyComment> replyComments = bbaService.gerComments(userId, replyId, pagingParam);
+        if (replyComments != null) {
+            return new Response().success(replyComments);
         } else {
             return new Response().failure();
         }
@@ -59,7 +207,7 @@ public class BbsController {
         if (!userId.equals(postParam.getUserId())) {
             return new Response().failure();
         }
-        Post post = postService.insertPost(postParam);
+        Post post = bbaService.insertPost(postParam);
 
         if (post != null) {
             return new Response().success(post);
@@ -74,7 +222,7 @@ public class BbsController {
         if (!userId.equals(postReplyParam.getUserId())) {
             throw new PermissionException();
         }
-        PostReply postReply = postService.insertPostReply(postReplyParam);
+        PostReply postReply = bbaService.insertPostReply(postReplyParam);
 
         if (postReply != null) {
             return new Response().success(postReply);
@@ -89,7 +237,7 @@ public class BbsController {
         if (!userId.equals(replyCommentParam.getUserId())) {
             throw new PermissionException();
         }
-        ReplyComment replyComment = postService.insertReplyComment(replyCommentParam);
+        ReplyComment replyComment = bbaService.insertReplyComment(replyCommentParam);
         if (replyComment != null) {
             return new Response().success(replyComment);
         } else {

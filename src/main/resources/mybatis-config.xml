@@ -37,8 +37,16 @@
     <!--<objectFactory type=""/>-->
     <!--插件-->
     <!--<plugins>-->
-    <!--<plugin interceptor=""></plugin>-->
+    <!--<plugin paging=""></plugin>-->
     <!--</plugins>-->
+    <plugins>
+        <!--分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="supportMethodsArguments" value="true"/>
+            <property name="params"
+                      value="pageNum=pageNum;pageSize=pageSize;orderBy=orderBy"/>
+        </plugin>
+    </plugins>
     <!--数据库厂商标识-->
     <!--<databaseIdProvider type=""/>-->
     <!--映射器-->

@@ -4,6 +4,7 @@ import cn.novedu.bean.*;
 import cn.novedu.constant.PostPermission;
 import cn.novedu.constant.UserType;
 import cn.novedu.mapper.*;
+import cn.novedu.param.PagingParam;
 import cn.novedu.param.PostParam;
 import cn.novedu.param.PostReplyParam;
 import cn.novedu.param.ReplyCommentParam;
@@ -25,7 +26,7 @@ import java.util.List;
  * @author Max Huang
  */
 @Service
-public class PostService {
+public class BbsService {
     @Autowired
     private PostMapper postMapper;
     @Autowired
@@ -40,7 +41,7 @@ public class PostService {
     private ReplyCommentMapper replyCommentMapper;
     @Autowired
     private TeachClazzMapper teachClazzMapper;
-    private Logger logger = LoggerFactory.getLogger(PostService.class);
+    private Logger logger = LoggerFactory.getLogger(BbsService.class);
 
     /**
      * 获得该班级下的所有权限为ALL的帖子
@@ -49,7 +50,10 @@ public class PostService {
      * @param clazzId
      * @return
      */
-    public List<Post> getAllPostByClazzId(String userId, String clazzId) {
+    public List<Post> getAllPostByClazzId(String userId, String clazzId, PagingParam pagingParam) {
+        if (pagingParam == null) {
+            pagingParam = new PagingParam();
+        }
         UserType userType = userMapper.findUserTypeById(userId);
         Boolean result;
         if (userType == UserType.STUDENT) {
@@ -60,7 +64,8 @@ public class PostService {
         if (result == null || !result) {
             return null;
         } else {
-            return postMapper.findByClazzIdAndPostPermission(clazzId, PostPermission.ALL);
+            return postMapper.findByClazzIdAndPostPermissionWithPaging(
+                    clazzId, PostPermission.ALL, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
         }
     }
 
@@ -72,7 +77,10 @@ public class PostService {
      * @param clazzId
      * @return
      */
-    public List<Post> getTeamPostByClazzId(String userId, String clazzId) {
+    public List<Post> getTeamPostByClazzId(String userId, String clazzId, PagingParam pagingParam) {
+        if (pagingParam == null) {
+            pagingParam = new PagingParam();
+        }
         UserType userType = userMapper.findUserTypeById(userId);
         if (userType == UserType.STUDENT) {
             AttendClazz attendClazz = attendClazzMapper.findByStudentIdAndClazzId(userId, clazzId);
@@ -83,25 +91,62 @@ public class PostService {
             if (teamId == null || "".equals(teamId)) {
                 return null;
             }
-            return postMapper.findByTeamId(teamId);
+            return postMapper.findByTeamIdWithPaging(
+                    teamId, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
 
         } else {
             Boolean result = teachClazzMapper.judgeTeacherInClazz(userId, clazzId);
             if (result != null && result) {
-                return postMapper.findByClazzIdAndPostPermission(clazzId, PostPermission.TEAM);
+                return postMapper.findByClazzIdAndPostPermissionWithPaging(
+                        clazzId, PostPermission.TEAM, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
             } else {
                 return null;
             }
         }
     }
 
-    public PostResult getPostById(String userId, String postId) {
+    /**
+     * 根据post id返回result,包括post和reply list
+     *
+     * @param userId
+     * @param postId
+     * @param pagingParam
+     * @return
+     */
+    public PostResult getPostById(String userId, String postId, boolean withReplies, PagingParam pagingParam) {
+        if (pagingParam == null) {
+            pagingParam = new PagingParam();
+        }
         if (!checkPermission(userId, postId, true)) {
             throw new PermissionException("permission denied");
         }
         Post post = postMapper.findById(postId);
-        List<PostReply> postReplies = postReplyMapper.findByPostId(postId);
+        List<PostReply> postReplies = new ArrayList<>();
+        if (withReplies) {
+            postReplies = postReplyMapper.findByPostIdWithPaging(postId, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
+        }
         return new PostResult(post, postReplies);
+    }
+
+    public List<PostReply> getReplies(String userId, String postId, PagingParam pagingParam) {
+        if (pagingParam == null) {
+            pagingParam = new PagingParam();
+        }
+        if (!checkPermission(userId, postId, true)) {
+            throw new PermissionException("permission denied");
+        }
+        return postReplyMapper.findByPostIdWithPaging(postId, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
+    }
+
+    public List<ReplyComment> gerComments(String userId, String replyId, PagingParam pagingParam) {
+        if (pagingParam == null) {
+            pagingParam = new PagingParam();
+        }
+        String postId = postReplyMapper.findPostIdById(replyId);
+        if (!checkPermission(userId, postId, true)) {
+            throw new PermissionException("permission denied");
+        }
+        return replyCommentMapper.findByReplyIdWithPaging(replyId, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
     }
 
     /**

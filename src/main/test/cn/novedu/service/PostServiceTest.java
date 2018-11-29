@@ -26,7 +26,7 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = {"classpath:application-context.xml", "classpath:spring-mvc.xml"})
 public class PostServiceTest {
     @Autowired
-    private PostService postService;
+    private BbsService postService;
     private Logger logger = LoggerFactory.getLogger(PostServiceTest.class);
 
     @Test

@@ -73,7 +73,19 @@
         from post p inner join post_setting ps on ps.post_id=p.id
         where p.clazz_id=#{clazzId} and ps.post_permission=#{postPermission.name}
     </select>
+    <select id="findByClazzIdAndPostPermissionWithPaging" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from post p inner join post_setting ps on ps.post_id=p.id
+        where p.clazz_id=#{clazzId} and ps.post_permission=#{postPermission.name}
+    </select>
     <select id="findByTeamId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from post p inner join post_setting setting on p.id = setting.post_id
+        where setting.team_id=#{teamId}
+    </select>
+    <select id="findByTeamIdWithPaging" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from post p inner join post_setting setting on p.id = setting.post_id

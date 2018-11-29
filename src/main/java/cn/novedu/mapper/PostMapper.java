@@ -23,7 +23,21 @@ public interface PostMapper {
 
     Boolean judgeTeacherIdAndPostIdInSameClazz(@Param("userId") String userId, @Param("postId") String postId);
 
-    List<Post> findByClazzIdAndPostPermission(@Param("clazzId")String clazzId, @Param("postPermission")PostPermission postPermission);
+    List<Post> findByClazzIdAndPostPermission(@Param("clazzId") String clazzId, @Param("postPermission") PostPermission postPermission);
 
-    List<Post> findByTeamId(@Param("teamId")String teamId);
+    List<Post> findByClazzIdAndPostPermissionWithPaging(
+            @Param("clazzId") String clazzId,
+            @Param("postPermission") PostPermission postPermission,
+            @Param("pageNum") Integer pageNum,
+            @Param("pageSize") Integer pageSize,
+            @Param("orderBy") String orderBy
+    );
+
+    List<Post> findByTeamId(@Param("teamId") String teamId);
+
+    List<Post> findByTeamIdWithPaging(
+            @Param("teamId") String teamId,
+            @Param("pageNum") Integer pageNum,
+            @Param("pageSize") Integer pageSize,
+            @Param("orderBy") String orderBy);
 }

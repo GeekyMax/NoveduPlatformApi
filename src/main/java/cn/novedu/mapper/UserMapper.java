@@ -3,6 +3,7 @@ package cn.novedu.mapper;
 import cn.novedu.bean.UserInfo;
 import cn.novedu.constant.UserType;
 
+import cn.novedu.param.PagingParam;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,4 +26,10 @@ public interface UserMapper {
     UserType findUserTypeById(@Param("id") String id);
 
     UserInfo findUserInfoById(String id);
+
+    List<User> findByUserType(
+            @Param("userType") UserType userType,
+            PagingParam pagingParam);
+
+
 }

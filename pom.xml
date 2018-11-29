@@ -10,7 +10,6 @@
     <packaging>war</packaging>
 
     <name>NoveduPlatform Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://api.novedu.cn</url>
 
     <properties>
@@ -26,6 +25,12 @@
     </properties>
 
     <dependencies>
+        <!--page helper 用于对请求结果的分页,排序的支持-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.8</version>
+        </dependency>
         <!--gson 支持-->
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
@@ -400,11 +405,11 @@
         </pluginManagement>
     </build>
     <repositories>
-    <repository>
-    <id>163maven</id>
-    <name>163 maven</name>
-    <!--<url>https://maven.aliyun.com/repository/central</url>-->
-    <url>http://mirrors.163.com/maven/repository/maven-public/</url>
-    </repository>
+        <repository>
+            <id>163maven</id>
+            <name>163 maven</name>
+            <!--<url>https://maven.aliyun.com/repository/central</url>-->
+            <url>http://mirrors.163.com/maven/repository/maven-public/</url>
+        </repository>
     </repositories>
 </project>

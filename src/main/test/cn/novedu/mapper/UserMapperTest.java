@@ -1,7 +1,9 @@
 package cn.novedu.mapper;
 
 import cn.novedu.bean.User;
+import cn.novedu.bean.UserInfo;
 import cn.novedu.constant.UserType;
+import cn.novedu.param.PagingParam;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -30,9 +32,15 @@ public class UserMapperTest {
 
     @Test
     public void insert() {
-        User user = new User( "max", "name", "", UserType.TEACHER);
+        User user = new User("max", "name", "", UserType.TEACHER);
         int i = userMapper.insert(user);
         logger.debug(user.getId());
     }
 
+    @Test
+    public void findByUserType() {
+        List<User> users = userMapper.findByUserType(UserType.STUDENT,new PagingParam(2,3,"username desc"));
+        users.forEach(user -> logger.debug(user.getName()));
+
+    }
 }
