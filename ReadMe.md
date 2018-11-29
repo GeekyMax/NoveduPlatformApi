@@ -6,7 +6,7 @@
 
 ## Ⅰ 网站根目录
 
-novedu.cn/api/v1/
+api.novedu.cn/v1/
 
 ## Ⅱ 响应格式
 
@@ -59,51 +59,51 @@ novedu.cn/api/v1/
 
 之后发送请求时在header中加入 X-NOV-TOKEN: eyJhbGciOiJIUzI1NiJ9.xxx用于用户验证。
 
-## Ⅳ api目录
+## Ⅳ api目录 
 
 省略版本号
 
 - 用户相关
-  - /api/auth/login POST 用户登录
-  - /api/auth/register POST 用户注册
-  - /api/auth/change-password POST 修改用户密码
-  - /api/users 用户信息
+  -  /auth/login POST 用户登录
+  -  /auth/register POST 用户注册
+  -  /auth/change-password POST 修改用户密码
+  -  /users 用户信息
 - 课程信息(包括课程基本信息，教学大纲，教师信息)
-  - /api/classes GET 获取所有课程信息
-  - /api/classes/:id GET 获取指定课程信息
+  -  /classes GET 获取所有课程信息
+  -  /classes/:id GET 获取指定课程信息
 - 课程组队
-  - /api/classes/:id/teams GET 获取所有队伍信息（支持过滤信息）
-  - /api/teams/:id GET 获取指定队伍信息
-  - /api/classes/:id/teams POST 新建一个队伍
-  - /api/teams/:id DELETE 删除队伍
-  - /api/teams/:id PUT 更新队伍信息
-  - /api/teams/:id/request POST 加入某只队伍
-  - /api/teams/:id/request GET 获取加入队伍信息
-  - /api/teams/:id/request/handler POST 处理请求信息
+  -  /classes/:id/teams GET 获取所有队伍信息（支持过滤信息）
+  -  /teams/:id GET 获取指定队伍信息
+  -  /classes/:id/teams POST 新建一个队伍
+  -  /teams/:id DELETE 删除队伍
+  -  /teams/:id PUT 更新队伍信息
+  -  /teams/:id/request POST 加入某只队伍
+  -  /teams/:id/request GET 获取加入队伍信息
+  -  /teams/:id/request/handler POST 处理请求信息
 - 课程论坛
-  - /api/bbs/:id/posts GET 获取所有帖子信息(支持过滤信息)
-  - /api/posts/:id GET 获取指定帖子信息
-  - /api/bbs/:id/posts POST 发布帖子
-  - /api/posts/:id PUT 修改帖子(内容,权限)
-  - /api/posts/:id DELETE 删除帖子
-  - /api/posts/:id/replies GET 获取所有帖子回复(支持过滤信息)
-  - /api/posts/:id/replies POST 发布回帖
-  - /api/replies/:reply_id DELETE 删除回帖
-  - /api/replies/:reply-id/comments GET 获得评论
-  - /api/replies/:reply-id/comments POST 发布评论
-  - /api/comments/:comment-id DELETE 删除评论
-  - /api/bbs/:id POST 修改论坛设置
-  - /api/bbs/:id/query?q=xxx GET 搜索主题帖(支持过滤信息)
+  -  /bbs/:id/posts GET 获取所有帖子信息(支持过滤信息)
+  -  /posts/:id GET 获取指定帖子信息
+  -  /bbs/:id/posts POST 发布帖子
+  -  /posts/:id PUT 修改帖子(内容,权限)
+  -  /posts/:id DELETE 删除帖子
+  -  /posts/:id/replies GET 获取所有帖子回复(支持过滤信息)
+  -  /posts/:id/replies POST 发布回帖
+  -  /replies/:reply_id DELETE 删除回帖
+  -  /replies/:reply-id/comments GET 获得评论
+  -  /replies/:reply-id/comments POST 发布评论
+  -  /comments/:comment-id DELETE 删除评论
+  -  /bbs/:id POST 修改论坛设置
+  -  /bbs/:id/query?q=xxx GET 搜索主题帖(支持过滤信息)
 - 课程资料
-  - /api/classes/:id/resources GET 获取课程资源列表(支持过滤信息)
-  - /api/classes/:id/resources/:id GET 获取课程资源详细信息
-  - /api/classes/:id/resources POST 添加课程资源
-  - /api/classes/:id/resources/:id DELETE 删除资源
+  -  /classes/:id/resources GET 获取课程资源列表(支持过滤信息)
+  -  /classes/:id/resources/:id GET 获取课程资源详细信息
+  -  /classes/:id/resources POST 添加课程资源
+  -  /classes/:id/resources/:id DELETE 删除资源
 - 消息系统
-  - /api/messages GET 消息列表 获取消息列表(支持过滤信息)
-  - /api/messages/:id GET 获得指定消息信息
-  - /api/messages/:id POST 响应消息 
-  - /api/messages/:id DELETE 删除消息
+  -  /messages GET 消息列表 获取消息列表(支持过滤信息)
+  -  /messages/:id GET 获得指定消息信息
+  -  /messages/:id POST 响应消息 
+  -  /messages/:id DELETE 删除消息
   - 
 
 ## Ⅴ过滤信息
@@ -121,35 +121,35 @@ novedu.cn/api/v1/
 
 ### 用户相关
 
-#### /api/auth/login POST 用户登录
+####  /auth/login POST 用户登录
 
 ### 课程信息
 
-#### /api/classes GET 获取所有课程信息
+####  /classes GET 获取所有课程信息
 
-#### /api/classes/:id GET 获取指定课程信息
+####  /classes/:id GET 获取指定课程信息
 
 ### 课程组队
 
-#### /api/classes/:id/teams GET 获取所有队伍信息（支持过滤信息）
+####  /classes/:id/teams GET 获取所有队伍信息（支持过滤信息）
 
-#### /api/classes/:id/teams/:id GET 获取指定队伍信息
+####  /classes/:id/teams/:id GET 获取指定队伍信息
 
-#### /api/classes/:id/teams POST 新建一个队伍
+####  /classes/:id/teams POST 新建一个队伍
 
-#### /api/classes/:id/teams/:id DELETE 删除队伍
+####  /classes/:id/teams/:id DELETE 删除队伍
 
-#### /api/classes/:id/teams/:id PUT 更新队伍信息
+####  /classes/:id/teams/:id PUT 更新队伍信息
 
-#### /api/classes/:id/teams/:id/request POST 加入某只队伍
+####  /classes/:id/teams/:id/request POST 加入某只队伍
 
-#### /api/classes/:id/teams/:id/request GET 获取加入队伍信息
+####  /classes/:id/teams/:id/request GET 获取加入队伍信息
 
-#### /api/classes/:id/teams/:id/request/handler POST 处理请求信息
+####  /classes/:id/teams/:id/request/handler POST 处理请求信息
 
 ### 课程论坛
 
-#### /api/bbs/:id/posts GET 获取所有帖子信息(支持过滤信息)
+####  /bbs/:id/posts GET 获取所有帖子信息(支持过滤信息)
 
 ```json
 {
@@ -629,7 +629,7 @@ novedu.cn/api/v1/
 }
 ```
 
-- #### /api/bbs/:id/posts/:id GET 获取指定帖子信息
+- ####  /bbs/:id/posts/:id GET 获取指定帖子信息
 
   ```json
   {
@@ -805,7 +805,7 @@ novedu.cn/api/v1/
   }
   ```
 
-#### /api/bbs/:id/posts POST 发布帖子
+####  /bbs/:id/posts POST 发布帖子
 
 发送请求
 
@@ -924,13 +924,13 @@ novedu.cn/api/v1/
 
 
 
-#### /api/bbs/:id/posts/:id PUT 修改帖子(内容,权限)
+####  /bbs/:id/posts/:id PUT 修改帖子(内容,权限)
 
-#### /api/bbs/:id/posts/:id DELETE 删除帖子
+####  /bbs/:id/posts/:id DELETE 删除帖子
 
-#### /api/bbs/:id/posts/:id/replies GET 获取所有帖子回复(支持过滤信息)
+####  /bbs/:id/posts/:id/replies GET 获取所有帖子回复(支持过滤信息)
 
-#### /api/bbs/:id/posts/:id/replies POST 发布回帖
+####  /bbs/:id/posts/:id/replies POST 发布回帖
 
 发送请求
 
@@ -946,11 +946,11 @@ novedu.cn/api/v1/
 
 
 
-#### /api/bbs/:id/posts/:id/replies/:reply_id DELETE 删除回帖
+####  /bbs/:id/posts/:id/replies/:reply_id DELETE 删除回帖
 
-#### /api/bbs/:id POST 修改论坛设置
+####  /bbs/:id POST 修改论坛设置
 
-#### /api/bbs/:id/query?q=xxx GET 搜索主题帖(支持过滤信息)
+####  /bbs/:id/query?q=xxx GET 搜索主题帖(支持过滤信息)
 
 
 

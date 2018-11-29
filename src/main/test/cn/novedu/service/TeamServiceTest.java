@@ -75,7 +75,7 @@ public class TeamServiceTest {
 
     @Test
     public void getTeams() {
-        List<Team> teamList = teamService.getTeams("88428f02863b48a78699c54ed29b40d3", "b7b709b5f12611e8b5b102004c4f4f50");
+        List<Team> teamList = teamService.getTeams("88428f02863b48a78699c54ed29b40d3", "b7b709b5f12611e8b5b102004c4f4f50",null);
         for (Team team : teamList) {
             logger.debug(team.getName());
         }
