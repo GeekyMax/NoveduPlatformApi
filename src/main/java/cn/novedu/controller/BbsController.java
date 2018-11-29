@@ -36,7 +36,7 @@ public class BbsController {
     private ClazzService clazzService;
     @Autowired
     private PagingManager pagingManager;
-    Gson gson = new Gson();
+    private Gson gson = new Gson();
     private Logger logger = LoggerFactory.getLogger(BbsController.class);
 
     /**
@@ -47,13 +47,14 @@ public class BbsController {
      * 3.小组内可见的帖子(scope=ALL时不返回
      * 支持条件查询(page,per_page,order,sort),但是建议在使用条件查询时,使用scope参数限定返回ALL或是TEAM的posts
      *
-     * @param token
-     * @param bbsId
-     * @param pageNum
-     * @param pageSize
-     * @param order
-     * @param sort
-     * @return
+     * @param token    用户token
+     * @param bbsId    所查询的bbsId
+     * @param scope    查询范围(TEAM or ALL) 默认全部
+     * @param pageNum  第几页
+     * @param pageSize 每页几条
+     * @param order    升序asc还是降序desc
+     * @param sort     按什么列排序
+     * @return 返回List of Post(分为ALL和TEAM) clazz信息
      */
     @RequestMapping(value = "/bbs/{bbs-id}/posts", method = RequestMethod.GET)
     public Response getPosts(
@@ -96,14 +97,14 @@ public class BbsController {
      * 每个reply附带最多10条的reply comment
      * 更多的reply comment 请调用 replies/:id/comments
      *
-     * @param token
-     * @param postId
-     * @param withReplies 是否返回评论列表
-     * @param pageNum
-     * @param pageSize
-     * @param order
-     * @param sort
-     * @return
+     * @param token       用户token
+     * @param postId      请求的主帖id
+     * @param withReplies 是否需要带回复,default true
+     * @param pageNum     第几页
+     * @param pageSize    每页几条
+     * @param order       升序asc还是降序desc
+     * @param sort        按什么列排序
+     * @return PostResult 包括post 和 list of reply
      */
     @RequestMapping(value = "/posts/{post-id}", method = RequestMethod.GET)
     public Response getPostsById(
@@ -135,13 +136,13 @@ public class BbsController {
      * 每个reply最多带10条comment
      * 更多的reply comment 请调用 replies/:id/comments
      *
-     * @param token
-     * @param postId
-     * @param pageNum
-     * @param pageSize
-     * @param order
-     * @param sort
-     * @return
+     * @param token    用户token
+     * @param postId   请求的主帖id
+     * @param pageNum  第几页
+     * @param pageSize 每页几条
+     * @param order    升序asc还是降序desc
+     * @param sort     按什么列排序
+     * @return 返回List of PostReply
      */
     @RequestMapping(value = "/post/{post-id}/replies", method = RequestMethod.GET)
     public Response getReplies(
@@ -170,13 +171,13 @@ public class BbsController {
      * 查询指定reply的comments
      * 支持条件查询,默认返回所有的comments
      *
-     * @param token
-     * @param replyId
-     * @param pageNum
-     * @param pageSize
-     * @param order
-     * @param sort
-     * @return
+     * @param token    用户token
+     * @param replyId  所查询的回帖id
+     * @param pageNum  第几页
+     * @param pageSize 每页几条
+     * @param order    升序asc还是降序desc
+     * @param sort     按什么列排序
+     * @return 成功则返回 List of Comment
      */
     @RequestMapping(value = "/replies/{reply-id}/comments", method = RequestMethod.GET)
     public Response getComments(
@@ -201,12 +202,22 @@ public class BbsController {
         }
     }
 
+    /**
+     * 在指定论坛发布帖子
+     *
+     * @param token     用户token
+     * @param bbsId     所在的论坛id
+     * @param postParam 传入的帖子参数,其中的clazzId会被bbs-id覆盖
+     * @return 成功则返回发布的帖子对象
+     */
     @RequestMapping(value = "/bbs/{bbs-id}/posts", method = RequestMethod.POST)
     public Response postPost(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("bbs-id") String bbsId, @RequestBody PostParam postParam) {
         String userId = userService.getUserId(token);
+        // 校验token属于请求的userId
         if (!userId.equals(postParam.getUserId())) {
             return new Response().failure();
         }
+        postParam.setClazzId(bbsId);
         Post post = bbaService.insertPost(postParam);
 
         if (post != null) {
@@ -216,12 +227,22 @@ public class BbsController {
         }
     }
 
+    /**
+     * 对指定帖子发布回帖
+     *
+     * @param token          用户token
+     * @param postId         回帖的主帖id
+     * @param postReplyParam 传入的回帖参数,其中的postId会被路径中的id覆盖
+     * @return 成功则返回所发表的回帖
+     */
     @RequestMapping(value = "/posts/{post-id}/replies", method = RequestMethod.POST)
     public Response postReplies(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("post-id") String postId, @Valid @RequestBody PostReplyParam postReplyParam) {
         String userId = userService.getUserId(token);
+        // 校验token属于请求的userId
         if (!userId.equals(postReplyParam.getUserId())) {
             throw new PermissionException();
         }
+        postReplyParam.setPostId(postId);
         PostReply postReply = bbaService.insertPostReply(postReplyParam);
 
         if (postReply != null) {
@@ -231,12 +252,23 @@ public class BbsController {
         }
     }
 
+    /**
+     * 对指定回帖发表评论
+     *
+     * @param token             用户token
+     * @param replyId           需要评论的回帖id
+     * @param replyCommentParam 回复参数
+     * @return 成功则返回回复对象
+     */
     @RequestMapping(value = "/replies/{reply-id}/comments", method = RequestMethod.POST)
     public Response postReplyComments(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("reply-id") String replyId, @Valid @RequestBody ReplyCommentParam replyCommentParam) {
         String userId = userService.getUserId(token);
+        // 校验token属于请求的userId
         if (!userId.equals(replyCommentParam.getUserId())) {
             throw new PermissionException();
         }
+        // 覆盖参数中的replyId
+        replyCommentParam.setReplyId(replyId);
         ReplyComment replyComment = bbaService.insertReplyComment(replyCommentParam);
         if (replyComment != null) {
             return new Response().success(replyComment);

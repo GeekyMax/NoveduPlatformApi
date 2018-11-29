@@ -7,6 +7,7 @@ import cn.novedu.bean.*;
 import cn.novedu.constant.UserType;
 import cn.novedu.jdbc.id.IdGenerator;
 import cn.novedu.mapper.*;
+import cn.novedu.param.PagingParam;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,12 +45,12 @@ public class ClazzService {
         return clazzMapper.find();
     }
 
-    public List<Clazz> findByStudentId(String studentId) {
-        return clazzMapper.findByStudentId(studentId);
+    public List<Clazz> findByStudentId(String studentId, PagingParam pagingParam) {
+        return clazzMapper.findByStudentIdWithPaging(studentId, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
     }
 
-    public List<Clazz> findByTeacherId(String teacherId) {
-        return clazzMapper.findByTeacherId(teacherId);
+    public List<Clazz> findByTeacherId(String teacherId, PagingParam pagingParam) {
+        return clazzMapper.findByTeacherIdWithPaging(teacherId, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
     }
 
     public Clazz findByClazzIdAndStudentId(String clazzId, String studentId) {
@@ -62,12 +63,12 @@ public class ClazzService {
 
     public Clazz findByClazzIdAndUserId(String clazzId, String userId) {
         UserType userType = userMapper.findUserTypeById(userId);
-        if(userType==null){
+        if (userType == null) {
             return null;
-        }else if(userType==UserType.STUDENT){
-            return findByClazzIdAndStudentId(clazzId,userId);
-        }else{
-            return findByClazzIdAndTeacherId(clazzId,userId);
+        } else if (userType == UserType.STUDENT) {
+            return findByClazzIdAndStudentId(clazzId, userId);
+        } else {
+            return findByClazzIdAndTeacherId(clazzId, userId);
         }
     }
 

@@ -107,7 +107,19 @@
                  inner join attend_clazz a on c.id = a.clazz_id
         where a.student_id = #{studentId}
     </select>
+    <select id="findByStudentIdWithPaging" resultMap="BaseResultMap">
+        select c.id, code, student_count, course_id
+        from clazz c
+                 inner join attend_clazz a on c.id = a.clazz_id
+        where a.student_id = #{studentId}
+    </select>
     <select id="findByTeacherId" resultMap="BaseResultMap">
+        select c.id, code, student_count, course_id
+        from clazz c
+                 inner join teach_clazz tc on c.id = tc.clazz_id
+        where tc.teacher_id = #{teacherId}
+    </select>
+    <select id="findByTeacherIdWithPaging" resultMap="BaseResultMap">
         select c.id, code, student_count, course_id
         from clazz c
                  inner join teach_clazz tc on c.id = tc.clazz_id

@@ -23,12 +23,23 @@ public interface ClazzMapper {
 
     List<Clazz> findByStudentId(@Param("studentId") String studentId);
 
+    List<Clazz> findByStudentIdWithPaging(@Param("studentId") String studentId,
+                                          @Param("pageNum") Integer pageNum,
+                                          @Param("pageSize") Integer pageSize,
+                                          @Param("orderBy") String orderBy);
+
     List<Clazz> findByTeacherId(@Param("teacherId") String teacherId);
+
+    List<Clazz> findByTeacherIdWithPaging(@Param("teacherId") String teacherId,
+                                          @Param("pageNum") Integer pageNum,
+                                          @Param("pageSize") Integer pageSize,
+                                          @Param("orderBy") String orderBy);
 
     Clazz findByClazzIdAndStudentId(@Param("clazzId") String clazzId, @Param("studentId") String studentId);
 
     Clazz findByClazzIdAndTeacherId(@Param("clazzId") String clazzId, @Param("teacherId") String teacherId);
-    Integer countById(@Param("id")String id);
+
+    Integer countById(@Param("id") String id);
 
 
 }

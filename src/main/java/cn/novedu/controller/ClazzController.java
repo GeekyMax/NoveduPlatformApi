@@ -6,6 +6,8 @@ import cn.novedu.bean.StudentInfo;
 import cn.novedu.bean.TeacherInfo;
 import cn.novedu.constant.Constant;
 import cn.novedu.constant.UserType;
+import cn.novedu.jdbc.paging.PagingManager;
+import cn.novedu.param.PagingParam;
 import cn.novedu.result.ClassesResult;
 import cn.novedu.security.PermissionException;
 import cn.novedu.service.ClazzService;
@@ -31,18 +33,30 @@ public class ClazzController {
     private TeacherService teacherService;
     @Autowired
     private ClazzService clazzService;
+    @Autowired
+    private PagingManager pagingManager;
 
     @RequestMapping(value = "classes", method = RequestMethod.GET)
-    public Response classes(@RequestHeader("X-NOV-TOKEN") String token) {
+    public Response classes(
+            @RequestHeader(Constant.TOKEN_NAME) String token,
+            @RequestParam(value = "page", defaultValue = "0") int pageNum,
+            @RequestParam(value = "per_page", defaultValue = "0") int pageSize,
+            @RequestParam(value = "order", defaultValue = "asc") String order,
+            @RequestParam(value = "sort", defaultValue = "name") String sort) {
         String userId = userService.getUserId(token);
+        String orderBy = pagingManager.handleOrderBy("post", sort, order);
+        if (orderBy == null) {
+            orderBy = "post_time asc";
+        }
+        PagingParam pagingParam = new PagingParam(pageNum, pageSize, orderBy);
         UserType userType = userService.findUserTypeById(userId);
         if (userType == UserType.STUDENT) {
             StudentInfo studentInfo = studentService.findById(userId);
-            List<Clazz> clazzList = clazzService.findByStudentId(userId);
+            List<Clazz> clazzList = clazzService.findByStudentId(userId, pagingParam);
             return new Response().success(new ClassesResult(studentInfo, clazzList, userType));
         } else if (userType == UserType.TEACHER) {
             TeacherInfo teacherInfo = teacherService.findById(userId);
-            List<Clazz> clazzList = clazzService.findByTeacherId(userId);
+            List<Clazz> clazzList = clazzService.findByTeacherId(userId, pagingParam);
             return new Response().success(new ClassesResult(teacherInfo, clazzList, userType));
         } else {
             return new Response().failure("unknown type");

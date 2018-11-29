@@ -8,6 +8,7 @@ import cn.novedu.bean.*;
 import cn.novedu.constant.TeamRequestState;
 import cn.novedu.constant.UserType;
 import cn.novedu.mapper.*;
+import cn.novedu.param.PagingParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -70,34 +71,39 @@ public class TeamService {
         return team.getId();
     }
 
-    public List<Team> getTeams(String userId, String clazzId) {
+    public List<Team> getTeams(String userId, String clazzId, PagingParam pagingParam) {
         boolean inClazz = attendClazzMapper.countByStudentIdAndClazzId(userId, clazzId) > 0;
         if (!inClazz) {
             return null;
         }
-        return teamMapper.findByClazzId(clazzId);
+        return teamMapper.findByClazzIdWithPaging(clazzId, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
     }
 
-    public Team getTeamById(String userId, String clazzId, String teamId) {
-        boolean inClazz = attendClazzMapper.countByStudentIdAndClazzId(userId, clazzId) > 0;
-        if (!inClazz) {
-            return null;
-        }
-        Team team = teamMapper.findById(teamId);
-        if (team != null && team.getClazzId().equals(clazzId)) {
-            return team;
+    public Team getTeamById(String userId, String teamId) {
+        UserType userType = userMapper.findUserTypeById(userId);
+        if (userType == UserType.STUDENT) {
+            boolean inClazz = attendClazzMapper.judgeStudentInClazz(userId, teamId);
+            if (!inClazz) {
+                return null;
+            }
+            return teamMapper.findById(teamId);
         } else {
-            return null;
+            boolean inClazz = teachClazzMapper.judgeTeacherInClazz(userId, teamId);
+            if (!inClazz) {
+                return null;
+            }
+            return teamMapper.findById(teamId);
         }
     }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
-    public Boolean deleteTeamById(String userId, String clazzId, String teamId) {
+    public Boolean deleteTeamById(String userId, String teamId) {
         UserType userType = userMapper.findUserTypeById(userId);
         int result = 0;
         if (userType == UserType.STUDENT) {
-            result = teamMapper.deleteByIdAndClazzIdAndLeaderId(teamId, clazzId, userId);
+            result = teamMapper.deleteByIdAndLeaderId(teamId, userId);
         } else if (userType == UserType.TEACHER) {
+            String clazzId = teamMapper.findClazzIdById(teamId);
             if (teachClazzMapper.countByTeacherIdAndClazzId(userId, clazzId) == 1) {
                 result = teamMapper.deleteById(teamId);
             }
@@ -110,11 +116,11 @@ public class TeamService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
-    public Team updateTeamById(String userId, String clazzId, String teamId, Team newTeam) {
+    public Team updateTeamById(String userId, String teamId, Team newTeam) {
         newTeam.setId(teamId);
-        newTeam.setClazzId(clazzId);
+        newTeam.setClazzId(null);
         newTeam.setLeader(new StudentInfo(userId, null, null));
-        if (teamMapper.countByIdAndClazzIdAndLeaderId(teamId, clazzId, userId) == 1) {
+        if (teamMapper.existByIdAndLeaderId(teamId, userId)) {
             int result = teamMapper.updateByPrimaryKeySelective(newTeam);
             if (result != 1) {
                 throw new RuntimeException();
@@ -126,7 +132,8 @@ public class TeamService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
-    public Boolean insertTeamRequest(String userId, String clazzId, String teamId) {
+    public Boolean insertTeamRequest(String userId, String teamId) {
+        String clazzId = teamMapper.findClazzIdById(teamId);
         if (userMapper.findUserTypeById(userId) != UserType.STUDENT) {
             throw new RuntimeException("not a student");
         }
@@ -160,22 +167,20 @@ public class TeamService {
         return 1 == teamRequestMapper.insert(new TeamRequest(userId, teamId));
     }
 
-    public List<TeamRequest> getTeamRequests(String userId, String clazzId, String teamId) {
+    public List<TeamRequest> getTeamRequests(String userId, String teamId) {
         if (userMapper.findUserTypeById(userId) != UserType.STUDENT) {
             return null;
         }
-        if (teamMapper.countByIdAndClazzIdAndLeaderId(teamId, clazzId, userId) != 1) {
+        if (!teamMapper.existByIdAndLeaderId(teamId, userId)) {
             return null;
         }
-        List<TeamRequest> requestList = teamRequestMapper.findByTeamId(teamId);
-        return requestList;
+        return teamRequestMapper.findByTeamId(teamId);
     }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
-    public Boolean handleRequest(String userId, String clazzId, String teamId, String requestId, boolean isAccept) {
+    public Boolean handleRequest(String userId, String teamId, String requestId, boolean isAccept) {
         // 权限检查
-        Integer result = teamMapper.countByIdAndClazzIdAndLeaderId(teamId, clazzId, userId);
-        if (result != 1) {
+        if (!teamMapper.existByIdAndLeaderId(teamId, userId)) {
             throw new RuntimeException("permission denied");
         }
         TeamRequest teamRequest = teamRequestMapper.findById(requestId);
@@ -186,12 +191,14 @@ public class TeamService {
             throw new RuntimeException("request has been handled");
         }
         // 检查人数是否已经满
+        String clazzId = teamMapper.findClazzIdById(teamId);
         ClazzSetting clazzSetting = clazzSettingMapper.findByClazzId(clazzId);
         int studentCountInTeam = attendClazzMapper.countByTeamId(teamId);
         if (studentCountInTeam >= clazzSetting.getMaxTeamMemberCount()) {
             throw new RuntimeException("team member number limit");
         }
         // 更新请求信息
+        Integer result;
         result = teamRequestMapper.updateTeamRequestStateById(isAccept ? TeamRequestState.ACCEPTED : TeamRequestState.DENIED, requestId);
         if (result != 1) {
             throw new RuntimeException();

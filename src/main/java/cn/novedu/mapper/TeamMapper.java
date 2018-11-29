@@ -1,7 +1,5 @@
 package cn.novedu.mapper;
 
-import cn.novedu.bean.StudentInfo;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,13 +23,23 @@ public interface TeamMapper {
 
     List<Team> findByClazzId(@Param("clazzId") String clazzId);
 
+    List<Team> findByClazzIdWithPaging(@Param("clazzId") String clazzId,
+                                       @Param("pageNum") Integer pageNum,
+                                       @Param("pageSize") Integer pageSize,
+                                       @Param("orderBy") String orderBy);
+    String findClazzIdById(@Param("id")String id);
+
+
     Integer countByClazzId(@Param("clazzId") String clazzId);
 
     Integer countByIdAndClazzIdAndLeaderId(@Param("id") String id, @Param("clazzId") String clazzId, @Param("leaderId") String leaderId);
 
-
+    Boolean existByIdAndLeaderId(@Param("id")String id, @Param("leaderId")String leaderId);
     int deleteByIdAndClazzIdAndLeaderId(@Param("id") String id, @Param("clazzId") String clazzId, @Param("leaderId") String leaderId);
 
+    int deleteByIdAndLeaderId(@Param("id") String id, @Param("leader") String leaderId);
+    
+    
     int deleteById(@Param("id") String id);
 
 
