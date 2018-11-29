@@ -73,13 +73,13 @@ novedu.cn/api/v1/
   - /api/classes/:id GET 获取指定课程信息
 - 课程组队
   - /api/classes/:id/teams GET 获取所有队伍信息（支持过滤信息）
-  - /api/classes/:id/teams/:id GET 获取指定队伍信息
+  - /api/teams/:id GET 获取指定队伍信息
   - /api/classes/:id/teams POST 新建一个队伍
-  - /api/classes/:id/teams/:id DELETE 删除队伍
-  - /api/classes/:id/teams/:id PUT 更新队伍信息
-  - /api/classes/:id/teams/:id/request POST 加入某只队伍
-  - /api/classes/:id/teams/:id/request GET 获取加入队伍信息
-  - /api/classes/:id/teams/:id/request/handler POST 处理请求信息
+  - /api/teams/:id DELETE 删除队伍
+  - /api/teams/:id PUT 更新队伍信息
+  - /api/teams/:id/request POST 加入某只队伍
+  - /api/teams/:id/request GET 获取加入队伍信息
+  - /api/teams/:id/request/handler POST 处理请求信息
 - 课程论坛
   - /api/bbs/:id/posts GET 获取所有帖子信息(支持过滤信息)
   - /api/posts/:id GET 获取指定帖子信息
