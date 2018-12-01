@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 
 /**
  * 用于检查Token的拦截器
+ *
  * @author Max Huang
  */
 public class SecurityInterceptor extends HandlerInterceptorAdapter {
@@ -32,6 +33,10 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //允许options方法直接通过验证，用于跨域请求
+        if ("OPTIONS".equals(request.getMethod())) {
+            return true;
+        }
         // 从切点上获取目标方法
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();

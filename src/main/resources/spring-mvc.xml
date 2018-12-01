@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
     <!--资源位置路径配置-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
@@ -44,4 +44,13 @@
             </bean>
         </mvc:interceptor>
     </mvc:interceptors>
+    <!--配置跨域访问-->
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-methods="*"
+                     allow-credentials="true"
+                     allowed-headers="*"
+                     exposed-headers="X-NOV-TOKEN"
+                     allowed-origins="http://localhost:63343"/>
+    </mvc:cors>
 </beans>

@@ -14,30 +14,30 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <filter>
-        <filter-name>corsFilter</filter-name>
-        <filter-class>cn.novedu.security.cors.CorsFilter</filter-class>
-        <init-param>
-            <param-name>allowOrigin</param-name>
-            <param-value>*</param-value>
-        </init-param>
-        <init-param>
-            <param-name>allowMethods</param-name>
-            <param-value>GET,POST,PUT,DELETE,OPTIONS</param-value>
-        </init-param>
-        <init-param>
-            <param-name>allowCredentials</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <init-param>
-            <param-name>allowHeaders</param-name>
-            <param-value>Content-Type,X-Token,X-Username</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>corsFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    <!--<filter>-->
+        <!--<filter-name>corsFilter</filter-name>-->
+        <!--<filter-class>cn.novedu.security.cors.CorsFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>allowOrigin</param-name>-->
+            <!--<param-value>http://localhost:63343,*</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>allowMethods</param-name>-->
+            <!--<param-value>GET,POST,PUT,DELETE,OPTIONS</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>allowCredentials</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>allowHeaders</param-name>-->
+            <!--<param-value>Content-Type,X-Token,X-Username,X-NOV-TOKEN</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>corsFilter</filter-name>-->
+        <!--<url-pattern>*</url-pattern>-->
+    <!--</filter-mapping>-->
 
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -63,6 +63,10 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring-mvc.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dispatchOptionsRequest</param-name>
+            <param-value>true</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
         <!--文件传输配置-->

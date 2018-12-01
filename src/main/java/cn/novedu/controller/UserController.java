@@ -54,7 +54,7 @@ public class UserController {
         return new Response().success("welcome");
     }
 
-    @RequestMapping(value = "users", method = RequestMethod.GET)
+    @RequestMapping(value = "users", method = {RequestMethod.GET})
     public Response users(@RequestHeader("X-NOV-TOKEN") String token) throws Exception {
         String id = userService.getUserId(token);
         if (userService.findUserTypeById(id) == UserType.STUDENT) {
@@ -65,6 +65,12 @@ public class UserController {
             return new Response().success(teacherInfo);
         }
         return new Response().failure();
+    }
+
+    @IgnoreSecurity
+    @RequestMapping(value = "test", method = {RequestMethod.GET})
+    private Response test() {
+        return new Response().success();
     }
 }
 
