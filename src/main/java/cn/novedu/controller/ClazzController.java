@@ -46,7 +46,7 @@ public class ClazzController {
         String userId = userService.getUserId(token);
         String orderBy = pagingManager.handleOrderBy("post", sort, order);
         if (orderBy == null) {
-            orderBy = "post_time asc";
+            orderBy = "name asc";
         }
         PagingParam pagingParam = new PagingParam(pageNum, pageSize, orderBy);
         UserType userType = userService.findUserTypeById(userId);

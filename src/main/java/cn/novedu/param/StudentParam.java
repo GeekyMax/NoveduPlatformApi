@@ -1,44 +1,49 @@
-package cn.novedu.bean;
+package cn.novedu.param;
 
 import cn.novedu.constant.Sex;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author Max Huang
- */
-@JsonIgnoreProperties(ignoreUnknown = true, value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
-public class StudentInfo {
-    /**
-     * 唯一id
-     */
-    private String id;
+import javax.validation.constraints.NotNull;
+
+public class StudentParam {
     /**
      * 学生学号
      */
+    @NotNull
     private String username;
     /**
      * 学生姓名
      */
+    @NotNull
     private String name;
+    /**
+     * 学生密码
+     */
+    @NotNull
+    private String password;
     /**
      * 学生性别
      */
+    @NotNull
     private Sex sex;
     /**
      * 学生学院
      */
+    @NotNull
     private String college;
     /**
      * 学生专业
      */
+    @NotNull
     private String major;
     /**
      * 学生年级
      */
+    @NotNull
     private String grade;
     /**
      * 学生班级
      */
+    @NotNull
     private String clazz;
     /**
      * 学生电话
@@ -49,18 +54,13 @@ public class StudentInfo {
      */
     private String email;
 
-    public StudentInfo(String id, String username, String name) {
-        this.id = id;
-        this.username = username;
-        this.name = name;
+    public StudentParam() {
     }
 
-
-
-    public StudentInfo(String id, String username, String name, Sex sex, String college, String major, String grade, String clazz, String phone, String email) {
-        this.id = id;
+    public StudentParam(@NotNull String username, @NotNull String name, @NotNull String password, @NotNull Sex sex, @NotNull String college, @NotNull String major, @NotNull String grade, @NotNull String clazz, String phone, String email) {
         this.username = username;
         this.name = name;
+        this.password = password;
         this.sex = sex;
         this.college = college;
         this.major = major;
@@ -68,17 +68,6 @@ public class StudentInfo {
         this.clazz = clazz;
         this.phone = phone;
         this.email = email;
-    }
-
-    public StudentInfo() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -95,6 +84,14 @@ public class StudentInfo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Sex getSex() {

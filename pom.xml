@@ -25,6 +25,14 @@
     </properties>
 
     <dependencies>
+        <!--文件上传工具包-->
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+
         <!--page helper 用于对请求结果的分页,排序的支持-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
