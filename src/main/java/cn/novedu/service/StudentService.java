@@ -7,6 +7,7 @@ import cn.novedu.constant.UserType;
 import cn.novedu.jdbc.id.IdGenerator;
 import cn.novedu.mapper.StudentInfoMapper;
 import cn.novedu.mapper.UserMapper;
+import cn.novedu.param.StudentParam;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

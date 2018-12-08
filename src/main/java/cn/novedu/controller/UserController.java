@@ -7,6 +7,7 @@ import cn.novedu.bean.User;
 import cn.novedu.constant.UserType;
 import cn.novedu.mapper.StudentInfoMapper;
 import cn.novedu.param.StudentParam;
+import cn.novedu.result.UserInfoResult;
 import cn.novedu.security.PermissionException;
 import cn.novedu.service.StudentService;
 import cn.novedu.service.TeacherService;
@@ -37,7 +38,7 @@ public class UserController {
     TeacherService teacherService;
 
     @IgnoreSecurity
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "users/login", method = RequestMethod.POST)
     public Response login(
             @Valid @RequestBody LoginParam loginParam
     ) {
@@ -53,27 +54,29 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "welcome", method = RequestMethod.GET)
-    public Response welcome() {
-        return new Response().success("welcome");
+    @RequestMapping(value = "users/logout", method = RequestMethod.POST)
+    public Response logout() {
+        return new Response().success();
     }
 
-    @RequestMapping(value = "users", method = {RequestMethod.GET})
+    @RequestMapping(value = "users/info", method = {RequestMethod.GET})
     public Response users(@RequestHeader("X-NOV-TOKEN") String token) throws Exception {
         String id = userService.getUserId(token);
         UserType userType = userService.findUserTypeById(id);
+        UserInfoResult userInfoResult = new UserInfoResult(userType);
         if (userType == UserType.STUDENT) {
             StudentInfo studentInfo = studentService.findById(id);
-            return new Response().success(studentInfo);
+            userInfoResult.setUserInfo(studentInfo);
         } else if (userType == UserType.TEACHER) {
             TeacherInfo teacherInfo = teacherService.findById(id);
-            return new Response().success(teacherInfo);
+            userInfoResult.setUserInfo(teacherInfo);
         }
-        return new Response().failure();
+        return new Response().success(userInfoResult);
     }
 
     /**
      * 上传csv文件批量添加学生
+     *
      * @param token
      * @param file
      * @return
@@ -90,7 +93,7 @@ public class UserController {
         }
         List<Integer> resultList = new ArrayList<>();
         int index = 1;
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(file.getInputStream(),"UTF-8"));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(file.getInputStream(), "UTF-8"));
         String line = bufferedReader.readLine();
         while (line != null && !"".equals(line)) {
             Boolean result = false;
@@ -110,6 +113,7 @@ public class UserController {
 
     /**
      * 添加单个学生信息
+     *
      * @param token
      * @param studentParam
      * @return
