@@ -55,7 +55,7 @@
     </mvc:cors>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
           p:defaultEncoding="UTF-8"
-          p:maxUploadSize="5400000"
+          p:maxUploadSize="100000000"
           p:uploadTempDir="fileUpload/temp">
     </bean>
 </beans>
