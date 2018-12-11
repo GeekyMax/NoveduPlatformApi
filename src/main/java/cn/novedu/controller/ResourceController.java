@@ -40,7 +40,11 @@ public class ResourceController {
         logger.debug(multipartFile.getContentType());
         logger.debug(multipartFile.getOriginalFilename());
         logger.debug("" + multipartFile.getSize());
-//        String userId = userService.getUserId(token);
+        logger.debug(detail);
+
+        logger.debug(name);
+        String userId1 = userService.getUserId(token);
+        logger.debug(userId1);
         String userId = "39078df7c84f48c58f14fb9678b28bec";
         UserType userType = userService.findUserTypeById(userId);
         Assert.assertEquals(userType, UserType.TEACHER);
