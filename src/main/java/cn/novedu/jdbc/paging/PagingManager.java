@@ -1,6 +1,7 @@
 package cn.novedu.jdbc.paging;
 
 import cn.novedu.mapper.SysMapper;
+import cn.novedu.param.PagingParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,5 +33,13 @@ public class PagingManager {
         } else {
             return false;
         }
+    }
+
+    public PagingParam createPagingParam(int pageNum, int pageSize, String order, String sort) {
+        String orderBy = handleOrderBy("post", sort, order);
+        if (orderBy == null) {
+            orderBy = "post_time asc";
+        }
+        return new PagingParam(pageNum, pageSize, orderBy);
     }
 }

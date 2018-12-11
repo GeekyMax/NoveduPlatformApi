@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.novedu.mapper.FileInfoMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="cn.novedu.bean.FileInfo">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="fix" property="fix" jdbcType="VARCHAR"/>
+        <result column="size" property="size" jdbcType="BIGINT"/>
+        <result column="path" property="path" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="other" property="other" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        name,
+        type,
+        fix,
+        size,
+        path,
+        user_id,
+        remark,
+        other
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="fileInfo.id">
+        INSERT INTO file_info (
+            id,
+            name,
+            type,
+            fix,
+            size,
+            path,
+            user_id,
+            remark,
+            other
+        ) VALUES (
+            #{fileInfo.id,jdbcType=VARCHAR},
+            #{fileInfo.name,jdbcType=VARCHAR},
+            #{fileInfo.type,jdbcType=VARCHAR},
+            #{fileInfo.fix,jdbcType=VARCHAR},
+            #{fileInfo.size,jdbcType=BIGINT},
+            #{fileInfo.path,jdbcType=VARCHAR},
+            #{fileInfo.userId,jdbcType=VARCHAR},
+            #{fileInfo.remark,jdbcType=VARCHAR},
+            #{fileInfo.other,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="fileInfo.id">
+        INSERT INTO file_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fileInfo.id!=null"> id,</if>
+            <if test="fileInfo.name!=null"> name,</if>
+            <if test="fileInfo.type!=null"> type,</if>
+            <if test="fileInfo.fix!=null"> fix,</if>
+            <if test="fileInfo.size!=null"> size,</if>
+            <if test="fileInfo.path!=null"> path,</if>
+            <if test="fileInfo.userId!=null"> user_id,</if>
+            <if test="fileInfo.remark!=null"> remark,</if>
+            <if test="fileInfo.other!=null"> other,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fileInfo.id!=null">#{fileInfo.id,jdbcType=VARCHAR},
+            </if>
+            <if test="fileInfo.name!=null">#{fileInfo.name,jdbcType=VARCHAR},
+            </if>
+            <if test="fileInfo.type!=null">#{fileInfo.type,jdbcType=VARCHAR},
+            </if>
+            <if test="fileInfo.fix!=null">#{fileInfo.fix,jdbcType=VARCHAR},
+            </if>
+            <if test="fileInfo.size!=null">#{fileInfo.size,jdbcType=BIGINT},
+            </if>
+            <if test="fileInfo.path!=null">#{fileInfo.path,jdbcType=VARCHAR},
+            </if>
+            <if test="fileInfo.userId!=null">#{fileInfo.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="fileInfo.remark!=null">#{fileInfo.remark,jdbcType=VARCHAR},
+            </if>
+            <if test="fileInfo.other!=null">#{fileInfo.other,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO file_info (
+            id,
+            name,
+            type,
+            fix,
+            size,
+            path,
+            user_id,
+            remark,
+            other
+        )VALUES
+        <foreach collection="fileInfos" item="fileInfo" index="index" separator=",">
+            (
+            #{fileInfo.id,jdbcType=VARCHAR},
+            #{fileInfo.name,jdbcType=VARCHAR},
+            #{fileInfo.type,jdbcType=VARCHAR},
+            #{fileInfo.fix,jdbcType=VARCHAR},
+            #{fileInfo.size,jdbcType=BIGINT},
+            #{fileInfo.path,jdbcType=VARCHAR},
+            #{fileInfo.userId,jdbcType=VARCHAR},
+            #{fileInfo.remark,jdbcType=VARCHAR},
+            #{fileInfo.other,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective">
+        UPDATE file_info
+        <set>
+            <if test="fileInfo.name != null"> name= #{fileInfo.name,jdbcType=VARCHAR},</if>
+            <if test="fileInfo.type != null"> type= #{fileInfo.type,jdbcType=VARCHAR},</if>
+            <if test="fileInfo.fix != null"> fix= #{fileInfo.fix,jdbcType=VARCHAR},</if>
+            <if test="fileInfo.size != null"> size= #{fileInfo.size,jdbcType=BIGINT},</if>
+            <if test="fileInfo.path != null"> path= #{fileInfo.path,jdbcType=VARCHAR},</if>
+            <if test="fileInfo.userId != null"> user_id= #{fileInfo.userId,jdbcType=VARCHAR},</if>
+            <if test="fileInfo.remark != null"> remark= #{fileInfo.remark,jdbcType=VARCHAR},</if>
+            <if test="fileInfo.other != null"> other= #{fileInfo.other,jdbcType=VARCHAR}</if>
+        </set>
+        WHERE id = #{fileInfo.id,jdbcType=VARCHAR}
+    </update>
+
+<!--auto generated by codehelper on 2018-12-10-->
+	<select id="findById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from file_info
+        where id=#{id,jdbcType=VARCHAR}
+    </select>
+</mapper>
+

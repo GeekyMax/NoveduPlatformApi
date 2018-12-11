@@ -14,6 +14,7 @@ public class PagingParam {
         this.orderBy = orderBy;
     }
 
+
     public Integer getPageNum() {
         return pageNum;
     }
