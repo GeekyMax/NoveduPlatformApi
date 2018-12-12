@@ -27,6 +27,7 @@ public class BulletinService {
         bulletin.setClazzId(clazzId);
         Assert.assertTrue(teachClazzMapper.judgeTeacherInClazz(userId, clazzId));
         if (bulletinMapper.insert(bulletin) == 1) {
+            bulletin = bulletinMapper.findById(bulletin.getId());
             return bulletin;
         } else {
             return null;
@@ -36,5 +37,11 @@ public class BulletinService {
     public List<Bulletin> getBulletins(String userId, String clazzId, PagingParam pagingParam) {
         Assert.assertTrue(teachClazzMapper.judgeTeacherInClazz(userId, clazzId) || attendClazzMapper.judgeStudentInClazz(userId, clazzId));
         return bulletinMapper.findByClazzId(clazzId, pagingParam.getPageNum(), pagingParam.getPageSize(), pagingParam.getOrderBy());
+    }
+
+    public int deleteBulletin(String userId, String bulletinId) {
+        Bulletin bulletin = bulletinMapper.findById(bulletinId);
+        Assert.assertTrue(teachClazzMapper.judgeTeacherInClazz(userId, bulletin.getClazzId()));
+        return bulletinMapper.deleteById(bulletinId);
     }
 }

@@ -17,7 +17,6 @@ public class Bulletin {
     /**
      * 班级id
      */
-    @NotNull
     @MaxLength(50)
     private String clazzId;
     /**

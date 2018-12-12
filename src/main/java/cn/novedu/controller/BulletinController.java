@@ -46,4 +46,15 @@ public class BulletinController {
         List<Bulletin> bulletinList = bulletinService.getBulletins(userId, clazzId, pagingParam);
         return new Response().success(bulletinList);
     }
+
+    @RequestMapping(value = "/bulletin/{id}", method = RequestMethod.DELETE)
+    public Response deleteBulletin(@RequestHeader(Constant.TOKEN_NAME) String token, @PathVariable("id") String bulletinId) {
+        String userId = userService.getUserId(token);
+        int result = bulletinService.deleteBulletin(userId, bulletinId);
+        if (result == 1) {
+            return new Response().success();
+        } else {
+            return new Response().failure();
+        }
+    }
 }

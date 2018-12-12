@@ -15,6 +15,10 @@ public interface BulletinMapper {
                                  @Param("pageNum") Integer pageNum,
                                  @Param("pageSize") Integer pageSize,
                                  @Param("orderBy") String orderBy);
+    Bulletin findById(@Param("id")String id);
+
+    int deleteById(@Param("id")String id);
+
 
 
 }
