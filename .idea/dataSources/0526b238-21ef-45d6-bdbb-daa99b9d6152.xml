@@ -939,58 +939,67 @@
     <table id="237" parent="5" name="file_info">
       <Comment>file_info</Comment>
     </table>
-    <table id="238" parent="5" name="post">
+    <table id="238" parent="5" name="homework">
+      <Comment>homework</Comment>
+    </table>
+    <table id="239" parent="5" name="homework_attachment">
+      <Comment>homework_attachment</Comment>
+    </table>
+    <table id="240" parent="5" name="homework_setting">
+      <Comment>homework_setting</Comment>
+    </table>
+    <table id="241" parent="5" name="post">
       <Comment>post</Comment>
     </table>
-    <table id="239" parent="5" name="post_reply">
+    <table id="242" parent="5" name="post_reply">
       <Comment>post_reply</Comment>
     </table>
-    <table id="240" parent="5" name="post_setting">
+    <table id="243" parent="5" name="post_setting">
       <Comment>post_setting</Comment>
     </table>
-    <table id="241" parent="5" name="reply_comment">
+    <table id="244" parent="5" name="reply_comment">
       <Comment>reply_comment</Comment>
     </table>
-    <table id="242" parent="5" name="student_info">
+    <table id="245" parent="5" name="student_info">
       <Comment>student_info</Comment>
     </table>
-    <table id="243" parent="5" name="teach_clazz">
+    <table id="246" parent="5" name="teach_clazz">
       <Comment>teach_clazz</Comment>
     </table>
-    <table id="244" parent="5" name="teacher_info">
+    <table id="247" parent="5" name="teacher_info">
       <Comment>teacher_info</Comment>
     </table>
-    <table id="245" parent="5" name="team">
+    <table id="248" parent="5" name="team">
       <Comment>team</Comment>
     </table>
-    <table id="246" parent="5" name="team_request">
+    <table id="249" parent="5" name="team_request">
       <Comment>team_request</Comment>
     </table>
-    <table id="247" parent="5" name="user">
+    <table id="250" parent="5" name="user">
       <Comment>user</Comment>
     </table>
-    <column id="248" parent="230" name="id">
+    <column id="251" parent="230" name="id">
       <Position>1</Position>
       <Comment>唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="230" name="student_id">
+    <column id="252" parent="230" name="student_id">
       <Position>2</Position>
       <Comment>学生id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="230" name="clazz_id">
+    <column id="253" parent="230" name="clazz_id">
       <Position>3</Position>
       <Comment>班级id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="230" name="team_id">
+    <column id="254" parent="230" name="team_id">
       <Position>4</Position>
       <Comment>加入队伍id</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -998,71 +1007,71 @@
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="252" parent="230" name="student_id">
+    <index id="255" parent="230" name="student_id">
       <ColNames>student_id
 clazz_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="253" parent="230" name="id">
+    <index id="256" parent="230" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="254" parent="230" name="clazz_id">
+    <index id="257" parent="230" name="clazz_id">
       <ColNames>clazz_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="255" parent="230" name="PRIMARY">
+    <key id="258" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="256" parent="230" name="student_id">
+    <key id="259" parent="230" name="student_id">
       <ColNames>student_id
 clazz_id</ColNames>
       <UnderlyingIndexName>student_id</UnderlyingIndexName>
     </key>
-    <foreign-key id="257" parent="230" name="attend_clazz_ibfk_1">
+    <foreign-key id="260" parent="230" name="attend_clazz_ibfk_1">
       <ColNames>student_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>student_info</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="258" parent="230" name="attend_clazz_ibfk_2">
+    <foreign-key id="261" parent="230" name="attend_clazz_ibfk_2">
       <ColNames>clazz_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>clazz</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="259" parent="231" name="id">
+    <column id="262" parent="231" name="id">
       <Position>1</Position>
       <Comment>公告唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="231" name="clazz_id">
+    <column id="263" parent="231" name="clazz_id">
       <Position>2</Position>
       <Comment>班级id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="231" name="title">
+    <column id="264" parent="231" name="title">
       <Position>3</Position>
       <Comment>公告标题</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="231" name="content">
+    <column id="265" parent="231" name="content">
       <Position>4</Position>
       <Comment>公告内容</Comment>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="231" name="create_time">
+    <column id="266" parent="231" name="create_time">
       <Position>5</Position>
       <Comment>发布时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1071,36 +1080,36 @@ clazz_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <index id="264" parent="231" name="clazz_id">
+    <index id="267" parent="231" name="clazz_id">
       <ColNames>clazz_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="265" parent="231" name="PRIMARY">
+    <key id="268" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="266" parent="231" name="bulletin_ibfk_1">
+    <foreign-key id="269" parent="231" name="bulletin_ibfk_1">
       <ColNames>clazz_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>clazz</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="267" parent="232" name="id">
+    <column id="270" parent="232" name="id">
       <Position>1</Position>
       <Comment>开课id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="232" name="code">
+    <column id="271" parent="232" name="code">
       <Position>2</Position>
       <Comment>本课代码</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="232" name="student_count">
+    <column id="272" parent="232" name="student_count">
       <Position>3</Position>
       <Comment>学生数量</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1108,60 +1117,60 @@ clazz_id</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="232" name="course_id">
+    <column id="273" parent="232" name="course_id">
       <Position>4</Position>
       <Comment>课程id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="271" parent="232" name="code">
+    <index id="274" parent="232" name="code">
       <ColNames>code</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="272" parent="232" name="id">
+    <index id="275" parent="232" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="273" parent="232" name="code_2">
+    <index id="276" parent="232" name="code_2">
       <ColNames>code</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="274" parent="232" name="course_id">
+    <index id="277" parent="232" name="course_id">
       <ColNames>course_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="275" parent="232" name="PRIMARY">
+    <key id="278" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="276" parent="232" name="code">
+    <key id="279" parent="232" name="code">
       <ColNames>code</ColNames>
       <UnderlyingIndexName>code</UnderlyingIndexName>
     </key>
-    <foreign-key id="277" parent="232" name="clazz_ibfk_1">
+    <foreign-key id="280" parent="232" name="clazz_ibfk_1">
       <ColNames>course_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>course</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="278" parent="233" name="id">
+    <column id="281" parent="233" name="id">
       <Position>1</Position>
       <Comment>唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="279" parent="233" name="clazz_id">
+    <column id="282" parent="233" name="clazz_id">
       <Position>2</Position>
       <Comment>上课id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="233" name="time">
+    <column id="283" parent="233" name="time">
       <Position>3</Position>
       <Comment>上课时间</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1169,7 +1178,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="233" name="place">
+    <column id="284" parent="233" name="place">
       <Position>4</Position>
       <Comment>上课地点</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1177,54 +1186,54 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="282" parent="233" name="id">
+    <index id="285" parent="233" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="283" parent="233" name="clazz_id">
+    <index id="286" parent="233" name="clazz_id">
       <ColNames>clazz_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="284" parent="233" name="PRIMARY">
+    <key id="287" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="285" parent="233" name="clazz_environment_ibfk_1">
+    <foreign-key id="288" parent="233" name="clazz_environment_ibfk_1">
       <ColNames>clazz_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>clazz</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="286" parent="234" name="id">
+    <column id="289" parent="234" name="id">
       <Position>1</Position>
       <Comment>课程资源唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="234" name="clazz_id">
+    <column id="290" parent="234" name="clazz_id">
       <Position>2</Position>
       <Comment>所属班级id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="288" parent="234" name="file_id">
+    <column id="291" parent="234" name="file_id">
       <Position>3</Position>
       <Comment>文件id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="289" parent="234" name="name">
+    <column id="292" parent="234" name="name">
       <Position>4</Position>
       <Comment>展示的名字,不同于文件名</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="234" name="visible">
+    <column id="293" parent="234" name="visible">
       <Position>5</Position>
       <Comment>是否可见</Comment>
       <DataType>tinyint(3)|0s</DataType>
@@ -1232,7 +1241,7 @@ clazz_id</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="234" name="detail">
+    <column id="294" parent="234" name="detail">
       <Position>6</Position>
       <Comment>详细信息</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1240,39 +1249,39 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="292" parent="234" name="clazz_id">
+    <index id="295" parent="234" name="clazz_id">
       <ColNames>clazz_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="293" parent="234" name="file_id">
+    <index id="296" parent="234" name="file_id">
       <ColNames>file_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="294" parent="234" name="PRIMARY">
+    <key id="297" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="295" parent="234" name="clazz_resource_ibfk_2">
+    <foreign-key id="298" parent="234" name="clazz_resource_ibfk_2">
       <ColNames>clazz_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>clazz</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="296" parent="234" name="clazz_resource_ibfk_1">
+    <foreign-key id="299" parent="234" name="clazz_resource_ibfk_1">
       <ColNames>file_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>file_info</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="297" parent="235" name="clazz_id">
+    <column id="300" parent="235" name="clazz_id">
       <Position>1</Position>
       <Comment>开课id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="298" parent="235" name="team_allowed">
+    <column id="301" parent="235" name="team_allowed">
       <Position>2</Position>
       <Comment>是否允许组建小组</Comment>
       <DataType>tinyint(3)|0s</DataType>
@@ -1280,7 +1289,7 @@ clazz_id</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="299" parent="235" name="max_team_member_count">
+    <column id="302" parent="235" name="max_team_member_count">
       <Position>3</Position>
       <Comment>每小组人数上限</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1288,7 +1297,7 @@ clazz_id</ColNames>
       <DefaultExpression>-1</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="300" parent="235" name="max_team_count">
+    <column id="303" parent="235" name="max_team_count">
       <Position>4</Position>
       <Comment>小组数量上限</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1296,43 +1305,43 @@ clazz_id</ColNames>
       <DefaultExpression>-1</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="301" parent="235" name="clazz_id">
+    <index id="304" parent="235" name="clazz_id">
       <ColNames>clazz_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="302" parent="235" name="PRIMARY">
+    <key id="305" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>clazz_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="303" parent="235" name="clazz_setting_ibfk_1">
+    <foreign-key id="306" parent="235" name="clazz_setting_ibfk_1">
       <ColNames>clazz_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>clazz</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="304" parent="236" name="id">
+    <column id="307" parent="236" name="id">
       <Position>1</Position>
       <Comment>课程唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="236" name="name">
+    <column id="308" parent="236" name="name">
       <Position>2</Position>
       <Comment>课程名称</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="306" parent="236" name="code">
+    <column id="309" parent="236" name="code">
       <Position>3</Position>
       <Comment>课程代码</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="307" parent="236" name="textbook">
+    <column id="310" parent="236" name="textbook">
       <Position>4</Position>
       <Comment>课程教材</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1340,7 +1349,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;无&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="308" parent="236" name="type">
+    <column id="311" parent="236" name="type">
       <Position>5</Position>
       <Comment>课程种类</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1348,7 +1357,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="309" parent="236" name="year">
+    <column id="312" parent="236" name="year">
       <Position>6</Position>
       <Comment>课程学年</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1356,7 +1365,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;长期&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="310" parent="236" name="semester">
+    <column id="313" parent="236" name="semester">
       <Position>7</Position>
       <Comment>课程学期</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1364,7 +1373,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="236" name="english_name">
+    <column id="314" parent="236" name="english_name">
       <Position>8</Position>
       <Comment>课程英文名</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1372,7 +1381,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="236" name="college">
+    <column id="315" parent="236" name="college">
       <Position>9</Position>
       <Comment>开课学院</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1380,7 +1389,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="236" name="credit">
+    <column id="316" parent="236" name="credit">
       <Position>10</Position>
       <Comment>课程学分</Comment>
       <DataType>double(16,4 digit)|0s</DataType>
@@ -1388,7 +1397,7 @@ clazz_id</ColNames>
       <DefaultExpression>0.0000</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="236" name="week_learning_time">
+    <column id="317" parent="236" name="week_learning_time">
       <Position>11</Position>
       <Comment>周学时</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1396,7 +1405,7 @@ clazz_id</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="236" name="weight">
+    <column id="318" parent="236" name="weight">
       <Position>12</Position>
       <Comment>权重</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1404,7 +1413,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="236" name="pre_learning">
+    <column id="319" parent="236" name="pre_learning">
       <Position>13</Position>
       <Comment>预修课程</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1412,7 +1421,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="317" parent="236" name="plan">
+    <column id="320" parent="236" name="plan">
       <Position>14</Position>
       <Comment>教学计划</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1420,7 +1429,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="318" parent="236" name="background">
+    <column id="321" parent="236" name="background">
       <Position>15</Position>
       <Comment>课程背景</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1428,43 +1437,43 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="319" parent="236" name="code">
+    <index id="322" parent="236" name="code">
       <ColNames>code</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="320" parent="236" name="id">
+    <index id="323" parent="236" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="321" parent="236" name="code_2">
+    <index id="324" parent="236" name="code_2">
       <ColNames>code</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="322" parent="236" name="PRIMARY">
+    <key id="325" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="323" parent="236" name="code">
+    <key id="326" parent="236" name="code">
       <ColNames>code</ColNames>
       <UnderlyingIndexName>code</UnderlyingIndexName>
     </key>
-    <column id="324" parent="237" name="id">
+    <column id="327" parent="237" name="id">
       <Position>1</Position>
       <Comment>唯一编号</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="325" parent="237" name="name">
+    <column id="328" parent="237" name="name">
       <Position>2</Position>
       <Comment>文件名(不唯一</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="326" parent="237" name="type">
+    <column id="329" parent="237" name="type">
       <Position>3</Position>
       <Comment>文件类型</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1472,7 +1481,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;OTHER&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="327" parent="237" name="fix">
+    <column id="330" parent="237" name="fix">
       <Position>4</Position>
       <Comment>文件后缀名</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1480,28 +1489,28 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="237" name="size">
+    <column id="331" parent="237" name="size">
       <Position>5</Position>
       <Comment>文件大小</Comment>
       <DataType>bigint(15)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="237" name="path">
+    <column id="332" parent="237" name="path">
       <Position>6</Position>
       <Comment>文件所在路径</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="237" name="user_id">
+    <column id="333" parent="237" name="user_id">
       <Position>7</Position>
       <Comment>上传用户id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="237" name="remark">
+    <column id="334" parent="237" name="remark">
       <Position>8</Position>
       <Comment>备注</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1509,7 +1518,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="332" parent="237" name="other">
+    <column id="335" parent="237" name="other">
       <Position>9</Position>
       <Comment>其他信息</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1517,43 +1526,233 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="333" parent="237" name="user_id">
+    <index id="336" parent="237" name="user_id">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="334" parent="237" name="PRIMARY">
+    <key id="337" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="335" parent="237" name="file_info_ibfk_1">
+    <foreign-key id="338" parent="237" name="file_info_ibfk_1">
       <ColNames>user_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="336" parent="238" name="id">
+    <column id="339" parent="238" name="id">
+      <Position>1</Position>
+      <Comment>作业唯一id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="340" parent="238" name="clazz_id">
+      <Position>2</Position>
+      <Comment>唯一id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="341" parent="238" name="title">
+      <Position>3</Position>
+      <Comment>标题</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="342" parent="238" name="content">
+      <Position>4</Position>
+      <Comment>详细内容</Comment>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="343" parent="238" name="notice">
+      <Position>5</Position>
+      <Comment>注意事项</Comment>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="344" parent="238" name="create_time">
+      <Position>6</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="345" parent="238" name="active_time">
+      <Position>7</Position>
+      <Comment>启用时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="346" parent="238" name="deadline">
+      <Position>8</Position>
+      <Comment>截止日期</Comment>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="347" parent="238" name="homework_state">
+      <Position>9</Position>
+      <Comment>作业状态</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;NOT_SET&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="348" parent="238" name="clazz_id">
+      <ColNames>clazz_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="349" parent="238" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="350" parent="238" name="homework_ibfk_1">
+      <ColNames>clazz_id</ColNames>
+      <RefSchemaName>novedu</RefSchemaName>
+      <RefTableName>clazz</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="351" parent="239" name="id">
+      <Position>1</Position>
+      <Comment>附件唯一id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="352" parent="239" name="user_id">
+      <Position>2</Position>
+      <Comment>用户id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="353" parent="239" name="homework_id">
+      <Position>3</Position>
+      <Comment>所属homeworkId</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="354" parent="239" name="file_info_id">
+      <Position>4</Position>
+      <Comment>所带文件</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="355" parent="239" name="user_id">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="356" parent="239" name="homework_id">
+      <ColNames>homework_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="357" parent="239" name="file_info_id">
+      <ColNames>file_info_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="358" parent="239" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="359" parent="239" name="homework_attachment_ibfk_2">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>novedu</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="360" parent="239" name="homework_attachment_ibfk_1">
+      <ColNames>homework_id</ColNames>
+      <RefSchemaName>novedu</RefSchemaName>
+      <RefTableName>homework</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="361" parent="239" name="homework_attachment_ibfk_3">
+      <ColNames>file_info_id</ColNames>
+      <RefSchemaName>novedu</RefSchemaName>
+      <RefTableName>file_info</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="362" parent="240" name="homework_id">
+      <Position>1</Position>
+      <Comment>作业id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="363" parent="240" name="coverable">
+      <Position>2</Position>
+      <Comment>是否可覆盖</Comment>
+      <DataType>tinyint(3)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>1</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="364" parent="240" name="overdueable">
+      <Position>3</Position>
+      <Comment>是否可逾期提交</Comment>
+      <DataType>tinyint(3)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="365" parent="240" name="personal">
+      <Position>4</Position>
+      <Comment>是否属于个人作业(非个人即小组作业)</Comment>
+      <DataType>tinyint(3)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="366" parent="240" name="allow_team_member_submit">
+      <Position>5</Position>
+      <Comment>允许组员提交</Comment>
+      <DataType>tinyint(3)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="367" parent="240" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>homework_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="368" parent="240" name="homework_setting_ibfk_1">
+      <ColNames>homework_id</ColNames>
+      <RefSchemaName>novedu</RefSchemaName>
+      <RefTableName>homework</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="369" parent="241" name="id">
       <Position>1</Position>
       <Comment>唯一编号id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="238" name="title">
+    <column id="370" parent="241" name="title">
       <Position>2</Position>
       <Comment>文章标题</Comment>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="238" name="content">
+    <column id="371" parent="241" name="content">
       <Position>3</Position>
       <Comment>文章内容</Comment>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="238" name="post_time">
+    <column id="372" parent="241" name="post_time">
       <Position>4</Position>
       <Comment>发布时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1561,7 +1760,7 @@ clazz_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="238" name="reply_time">
+    <column id="373" parent="241" name="reply_time">
       <Position>5</Position>
       <Comment>最后回复时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1570,7 +1769,7 @@ clazz_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <column id="341" parent="238" name="reply_count">
+    <column id="374" parent="241" name="reply_count">
       <Position>6</Position>
       <Comment>回复数量</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1578,83 +1777,83 @@ clazz_id</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="342" parent="238" name="clazz_id">
+    <column id="375" parent="241" name="clazz_id">
       <Position>7</Position>
       <Comment>所属班级信息</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="238" name="user_id">
+    <column id="376" parent="241" name="user_id">
       <Position>8</Position>
       <Comment>用户信息</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="344" parent="238" name="id">
+    <index id="377" parent="241" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="345" parent="238" name="clazz_id">
+    <index id="378" parent="241" name="clazz_id">
       <ColNames>clazz_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="346" parent="238" name="user_id">
+    <index id="379" parent="241" name="user_id">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="347" parent="238" name="PRIMARY">
+    <key id="380" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="348" parent="238" name="post_ibfk_1">
+    <foreign-key id="381" parent="241" name="post_ibfk_1">
       <ColNames>clazz_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>clazz</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="349" parent="238" name="post_ibfk_2">
+    <foreign-key id="382" parent="241" name="post_ibfk_2">
       <ColNames>user_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="350" parent="239" name="id">
+    <column id="383" parent="242" name="id">
       <Position>1</Position>
       <Comment>唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="239" name="post_id">
+    <column id="384" parent="242" name="post_id">
       <Position>2</Position>
       <Comment>主贴id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="352" parent="239" name="reference_id">
+    <column id="385" parent="242" name="reference_id">
       <Position>3</Position>
       <Comment>引用回复id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="353" parent="239" name="content">
+    <column id="386" parent="242" name="content">
       <Position>4</Position>
       <Comment>回复内容</Comment>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="354" parent="239" name="user_id">
+    <column id="387" parent="242" name="user_id">
       <Position>5</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="355" parent="239" name="reply_time">
+    <column id="388" parent="242" name="reply_time">
       <Position>6</Position>
       <Comment>回帖时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1662,53 +1861,53 @@ clazz_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="356" parent="239" name="id">
+    <index id="389" parent="242" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="357" parent="239" name="post_id">
+    <index id="390" parent="242" name="post_id">
       <ColNames>post_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="358" parent="239" name="reference_id">
+    <index id="391" parent="242" name="reference_id">
       <ColNames>reference_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="359" parent="239" name="user_id">
+    <index id="392" parent="242" name="user_id">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="360" parent="239" name="PRIMARY">
+    <key id="393" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="361" parent="239" name="post_reply_ibfk_1">
+    <foreign-key id="394" parent="242" name="post_reply_ibfk_1">
       <ColNames>post_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>post</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="362" parent="239" name="post_reply_ibfk_2">
+    <foreign-key id="395" parent="242" name="post_reply_ibfk_2">
       <ColNames>reference_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>post_reply</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="363" parent="239" name="post_reply_ibfk_3">
+    <foreign-key id="396" parent="242" name="post_reply_ibfk_3">
       <ColNames>user_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="364" parent="240" name="post_id">
+    <column id="397" parent="243" name="post_id">
       <Position>1</Position>
       <Comment>主题帖id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="365" parent="240" name="post_permission">
+    <column id="398" parent="243" name="post_permission">
       <Position>2</Position>
       <Comment>本贴权限</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1716,57 +1915,57 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;ALL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="366" parent="240" name="team_id">
+    <column id="399" parent="243" name="team_id">
       <Position>3</Position>
       <Comment>所属队伍id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="367" parent="240" name="post_id">
+    <index id="400" parent="243" name="post_id">
       <ColNames>post_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="368" parent="240" name="PRIMARY">
+    <key id="401" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>post_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="369" parent="240" name="post_setting_ibfk_1">
+    <foreign-key id="402" parent="243" name="post_setting_ibfk_1">
       <ColNames>post_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>post</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="370" parent="241" name="id">
+    <column id="403" parent="244" name="id">
       <Position>1</Position>
       <Comment>唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="371" parent="241" name="reply_id">
+    <column id="404" parent="244" name="reply_id">
       <Position>2</Position>
       <Comment>回帖id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="372" parent="241" name="content">
+    <column id="405" parent="244" name="content">
       <Position>3</Position>
       <Comment>回复内容</Comment>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="373" parent="241" name="user_id">
+    <column id="406" parent="244" name="user_id">
       <Position>4</Position>
       <Comment>学生id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="374" parent="241" name="comment_time">
+    <column id="407" parent="244" name="comment_time">
       <Position>5</Position>
       <Comment>回复时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1774,57 +1973,57 @@ clazz_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="375" parent="241" name="id">
+    <index id="408" parent="244" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="376" parent="241" name="reply_id">
+    <index id="409" parent="244" name="reply_id">
       <ColNames>reply_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="377" parent="241" name="user_id">
+    <index id="410" parent="244" name="user_id">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="378" parent="241" name="PRIMARY">
+    <key id="411" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="379" parent="241" name="reply_comment_ibfk_1">
+    <foreign-key id="412" parent="244" name="reply_comment_ibfk_1">
       <ColNames>reply_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>post_reply</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="380" parent="241" name="reply_comment_ibfk_2">
+    <foreign-key id="413" parent="244" name="reply_comment_ibfk_2">
       <ColNames>user_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="381" parent="242" name="id">
+    <column id="414" parent="245" name="id">
       <Position>1</Position>
       <Comment>唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="382" parent="242" name="username">
+    <column id="415" parent="245" name="username">
       <Position>2</Position>
       <Comment>学生学号</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="383" parent="242" name="name">
+    <column id="416" parent="245" name="name">
       <Position>3</Position>
       <Comment>学生姓名</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="384" parent="242" name="sex">
+    <column id="417" parent="245" name="sex">
       <Position>4</Position>
       <Comment>学生性别</Comment>
       <DataType>varchar(10)|0s</DataType>
@@ -1832,7 +2031,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;MALE&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="385" parent="242" name="college">
+    <column id="418" parent="245" name="college">
       <Position>5</Position>
       <Comment>学生学院</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1840,7 +2039,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="386" parent="242" name="major">
+    <column id="419" parent="245" name="major">
       <Position>6</Position>
       <Comment>学生专业</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1848,7 +2047,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="387" parent="242" name="grade">
+    <column id="420" parent="245" name="grade">
       <Position>7</Position>
       <Comment>学生年级</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1856,7 +2055,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="388" parent="242" name="clazz">
+    <column id="421" parent="245" name="clazz">
       <Position>8</Position>
       <Comment>学生班级</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1864,7 +2063,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="389" parent="242" name="phone">
+    <column id="422" parent="245" name="phone">
       <Position>9</Position>
       <Comment>学生电话</Comment>
       <DataType>varchar(20)|0s</DataType>
@@ -1872,7 +2071,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="390" parent="242" name="email">
+    <column id="423" parent="245" name="email">
       <Position>10</Position>
       <Comment>学生邮箱</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1880,106 +2079,106 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="391" parent="242" name="username">
+    <index id="424" parent="245" name="username">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="392" parent="242" name="id">
+    <index id="425" parent="245" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="393" parent="242" name="username_2">
+    <index id="426" parent="245" name="username_2">
       <ColNames>username</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="394" parent="242" name="PRIMARY">
+    <key id="427" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="395" parent="242" name="username">
+    <key id="428" parent="245" name="username">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>
-    <foreign-key id="396" parent="242" name="student_info_ibfk_1">
+    <foreign-key id="429" parent="245" name="student_info_ibfk_1">
       <ColNames>id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="397" parent="243" name="id">
+    <column id="430" parent="246" name="id">
       <Position>1</Position>
       <Comment>唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="398" parent="243" name="teacher_id">
+    <column id="431" parent="246" name="teacher_id">
       <Position>2</Position>
       <Comment>教师id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="399" parent="243" name="clazz_id">
+    <column id="432" parent="246" name="clazz_id">
       <Position>3</Position>
       <Comment>上课id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="400" parent="243" name="id">
+    <index id="433" parent="246" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="401" parent="243" name="teacher_id">
+    <index id="434" parent="246" name="teacher_id">
       <ColNames>teacher_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="402" parent="243" name="clazz_id">
+    <index id="435" parent="246" name="clazz_id">
       <ColNames>clazz_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="403" parent="243" name="PRIMARY">
+    <key id="436" parent="246" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="404" parent="243" name="teach_clazz_ibfk_1">
+    <foreign-key id="437" parent="246" name="teach_clazz_ibfk_1">
       <ColNames>teacher_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>teacher_info</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="405" parent="243" name="teach_clazz_ibfk_2">
+    <foreign-key id="438" parent="246" name="teach_clazz_ibfk_2">
       <ColNames>clazz_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>clazz</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="406" parent="244" name="id">
+    <column id="439" parent="247" name="id">
       <Position>1</Position>
       <Comment>教师唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="407" parent="244" name="username">
+    <column id="440" parent="247" name="username">
       <Position>2</Position>
       <Comment>教师卡号</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="408" parent="244" name="name">
+    <column id="441" parent="247" name="name">
       <Position>3</Position>
       <Comment>教师姓名</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="409" parent="244" name="sex">
+    <column id="442" parent="247" name="sex">
       <Position>4</Position>
       <Comment>教师性别 默认男</Comment>
       <DataType>varchar(10)|0s</DataType>
@@ -1987,7 +2186,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;MALE&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="410" parent="244" name="college">
+    <column id="443" parent="247" name="college">
       <Position>5</Position>
       <Comment>教师所属学院</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -1995,7 +2194,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="411" parent="244" name="department">
+    <column id="444" parent="247" name="department">
       <Position>6</Position>
       <Comment>教师所属系</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2003,7 +2202,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="412" parent="244" name="position">
+    <column id="445" parent="247" name="position">
       <Position>7</Position>
       <Comment>教师职位</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2011,7 +2210,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="413" parent="244" name="education">
+    <column id="446" parent="247" name="education">
       <Position>8</Position>
       <Comment>教师学历</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2019,7 +2218,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="414" parent="244" name="past_evaluation">
+    <column id="447" parent="247" name="past_evaluation">
       <Position>9</Position>
       <Comment>教师以往教学评价</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2027,7 +2226,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="415" parent="244" name="teach_style">
+    <column id="448" parent="247" name="teach_style">
       <Position>10</Position>
       <Comment>教学风格</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2035,7 +2234,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="416" parent="244" name="publish">
+    <column id="449" parent="247" name="publish">
       <Position>11</Position>
       <Comment>出版作品</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2043,7 +2242,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="417" parent="244" name="honor">
+    <column id="450" parent="247" name="honor">
       <Position>12</Position>
       <Comment>教师所获荣誉</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2051,7 +2250,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="418" parent="244" name="more">
+    <column id="451" parent="247" name="more">
       <Position>13</Position>
       <Comment>更多信息</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2059,7 +2258,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="419" parent="244" name="phone">
+    <column id="452" parent="247" name="phone">
       <Position>14</Position>
       <Comment>教师电话</Comment>
       <DataType>varchar(20)|0s</DataType>
@@ -2067,7 +2266,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="420" parent="244" name="email">
+    <column id="453" parent="247" name="email">
       <Position>15</Position>
       <Comment>教师电子邮箱</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2075,49 +2274,49 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="421" parent="244" name="username">
+    <index id="454" parent="247" name="username">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="422" parent="244" name="id">
+    <index id="455" parent="247" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="423" parent="244" name="username_2">
+    <index id="456" parent="247" name="username_2">
       <ColNames>username</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="424" parent="244" name="PRIMARY">
+    <key id="457" parent="247" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="425" parent="244" name="username">
+    <key id="458" parent="247" name="username">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>
-    <foreign-key id="426" parent="244" name="teacher_info_ibfk_1">
+    <foreign-key id="459" parent="247" name="teacher_info_ibfk_1">
       <ColNames>id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="427" parent="245" name="id">
+    <column id="460" parent="248" name="id">
       <Position>1</Position>
       <Comment>队伍 id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="428" parent="245" name="name">
+    <column id="461" parent="248" name="name">
       <Position>2</Position>
       <Comment>队伍名称</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="429" parent="245" name="description">
+    <column id="462" parent="248" name="description">
       <Position>3</Position>
       <Comment>队伍描述</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2125,21 +2324,21 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;无&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="430" parent="245" name="clazz_id">
+    <column id="463" parent="248" name="clazz_id">
       <Position>4</Position>
       <Comment>所属班级id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="431" parent="245" name="leader_id">
+    <column id="464" parent="248" name="leader_id">
       <Position>5</Position>
       <Comment>队长id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="432" parent="245" name="member_number">
+    <column id="465" parent="248" name="member_number">
       <Position>6</Position>
       <Comment>成员数</Comment>
       <DataType>int(11)|0s</DataType>
@@ -2147,7 +2346,7 @@ clazz_id</ColNames>
       <DefaultExpression>1</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="433" parent="245" name="create_time">
+    <column id="466" parent="248" name="create_time">
       <Position>7</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -2156,57 +2355,57 @@ clazz_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <index id="434" parent="245" name="id">
+    <index id="467" parent="248" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="435" parent="245" name="clazz_id">
+    <index id="468" parent="248" name="clazz_id">
       <ColNames>clazz_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="436" parent="245" name="leader_id">
+    <index id="469" parent="248" name="leader_id">
       <ColNames>leader_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="437" parent="245" name="PRIMARY">
+    <key id="470" parent="248" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="438" parent="245" name="team_ibfk_2">
+    <foreign-key id="471" parent="248" name="team_ibfk_2">
       <ColNames>clazz_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>clazz</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="439" parent="245" name="team_ibfk_1">
+    <foreign-key id="472" parent="248" name="team_ibfk_1">
       <ColNames>leader_id</ColNames>
       <RefSchemaName>novedu</RefSchemaName>
       <RefTableName>student_info</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="440" parent="246" name="id">
+    <column id="473" parent="249" name="id">
       <Position>1</Position>
       <Comment>请求唯一id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="441" parent="246" name="student_id">
+    <column id="474" parent="249" name="student_id">
       <Position>2</Position>
       <Comment>学生id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="442" parent="246" name="team_id">
+    <column id="475" parent="249" name="team_id">
       <Position>3</Position>
       <Comment>队伍id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="443" parent="246" name="team_request_state">
+    <column id="476" parent="249" name="team_request_state">
       <Position>4</Position>
       <Comment>请求状态</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2214,7 +2413,7 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;PENDING&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="444" parent="246" name="create_time">
+    <column id="477" parent="249" name="create_time">
       <Position>5</Position>
       <Comment>请求发起时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -2222,7 +2421,7 @@ clazz_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="445" parent="246" name="handle_time">
+    <column id="478" parent="249" name="handle_time">
       <Position>6</Position>
       <Comment>请求处理时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -2231,44 +2430,44 @@ clazz_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <index id="446" parent="246" name="id">
+    <index id="479" parent="249" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="447" parent="246" name="PRIMARY">
+    <key id="480" parent="249" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="448" parent="247" name="id">
+    <column id="481" parent="250" name="id">
       <Position>1</Position>
       <Comment>id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="449" parent="247" name="username">
+    <column id="482" parent="250" name="username">
       <Position>2</Position>
       <Comment>用户学工号</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="450" parent="247" name="name">
+    <column id="483" parent="250" name="name">
       <Position>3</Position>
       <Comment>用户名</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="451" parent="247" name="password">
+    <column id="484" parent="250" name="password">
       <Position>4</Position>
       <Comment>密码</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="452" parent="247" name="user_type">
+    <column id="485" parent="250" name="user_type">
       <Position>5</Position>
       <Comment>用户类别</Comment>
       <DataType>varchar(50)|0s</DataType>
@@ -2276,25 +2475,25 @@ clazz_id</ColNames>
       <DefaultExpression>&apos;STUDENT&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="453" parent="247" name="username">
+    <index id="486" parent="250" name="username">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="454" parent="247" name="id">
+    <index id="487" parent="250" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="455" parent="247" name="name">
+    <index id="488" parent="250" name="name">
       <ColNames>name</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="456" parent="247" name="PRIMARY">
+    <key id="489" parent="250" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="457" parent="247" name="username">
+    <key id="490" parent="250" name="username">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>

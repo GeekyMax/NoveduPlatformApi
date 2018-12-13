@@ -48,7 +48,7 @@ public class ResourceController {
         String userId = "39078df7c84f48c58f14fb9678b28bec";
         UserType userType = userService.findUserTypeById(userId);
         Assert.assertEquals(userType, UserType.TEACHER);
-        ClazzResource clazzResource = fileService.upload(multipartFile, clazzId, userId, name, detail);
+        ClazzResource clazzResource = fileService.uploadResource(multipartFile, clazzId, userId, name, detail);
         return new Response().success(clazzResource);
     }
 

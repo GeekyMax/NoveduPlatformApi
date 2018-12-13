@@ -2,6 +2,7 @@ package cn.novedu.service;
 
 import cn.novedu.bean.ClazzResource;
 import cn.novedu.bean.FileInfo;
+import cn.novedu.bean.HomeworkAttachment;
 import cn.novedu.constant.ResourceType;
 import cn.novedu.jdbc.id.IdGenerator;
 import cn.novedu.mapper.ClazzResourceMapper;
@@ -20,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLDecoder;
 import java.util.Date;
 
 /**
@@ -37,28 +37,49 @@ public class FileService {
     @Autowired
     private ClazzResourceMapper clazzResourceMapper;
     private Logger logger = LoggerFactory.getLogger(FileService.class);
+    private static final String SAVE_PATH = "C:/Code/storage/";
 
     public File getFile(String fileName) {
-        return new File("C:/Code/storage/" + fileName);
+        return new File(SAVE_PATH + fileName);
     }
 
-    public ClazzResource upload(MultipartFile multipartFile, String clazzId, String userId, String name, String detail) throws Exception {
-        Assert.assertTrue("无权限", teachClazzMapper.judgeTeacherInClazz(userId, clazzId));
+    /**
+     * 上传作业附件,带回滚,不带数据库操作
+     * @param multipartFile
+     * @param userId
+     * @return
+     * @throws Exception
+     */
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
+    public HomeworkAttachment uploadHomeworkAttachment(MultipartFile multipartFile, String userId) throws Exception {
         String fileFullName = multipartFile.getOriginalFilename();
-        String savePath = "C:/Code/storage/";
-        long fileSize = multipartFile.getSize();
-        FileInfo fileInfo = new FileInfo(idGenerator.generateId(), fileFullName, ResourceType.OTHER, "", fileSize, savePath, userId, "", "");
-        boolean result = saveFile(savePath, fileFullName, multipartFile);
+        FileInfo fileInfo = parseFileInfo(multipartFile, userId);
+        boolean result = saveFile(SAVE_PATH, fileFullName, multipartFile);
         Assert.assertTrue("文件创建失败", result);
+        return new HomeworkAttachment(userId, fileInfo);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
+    public ClazzResource uploadResource(MultipartFile multipartFile, String clazzId, String userId, String name, String detail) throws Exception {
+        Assert.assertTrue("无权限", teachClazzMapper.judgeTeacherInClazz(userId, clazzId));
+        FileInfo fileInfo = parseFileInfo(multipartFile, userId);
         ClazzResource clazzResource = new ClazzResource(clazzId, name, fileInfo, true, detail);
         saveResource(fileInfo, clazzResource);
         return clazzResource;
     }
 
+    private FileInfo parseFileInfo(MultipartFile multipartFile, String userId) throws Exception {
+        String fileFullName = multipartFile.getOriginalFilename();
+        long fileSize = multipartFile.getSize();
+        FileInfo fileInfo = new FileInfo(idGenerator.generateId(), fileFullName, ResourceType.OTHER, "", fileSize, SAVE_PATH, userId, "", "");
+        boolean result = saveFile(SAVE_PATH, fileFullName, multipartFile);
+        Assert.assertTrue("文件创建失败", result);
+        return fileInfo;
+    }
+
     /**
      * 把文件和资源信息存入数据库,出错就会滚
      */
-    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
     public void saveResource(FileInfo fileInfo, ClazzResource clazzResource) {
         fileInfoMapper.insert(fileInfo);
         clazzResourceMapper.insert(clazzResource);
@@ -204,7 +225,7 @@ public class FileService {
     }
 
     private void copyRange(InputStream istream, OutputStream ostream,
-                             long start, long end) throws IOException {
+                           long start, long end) throws IOException {
 
         long skipped = 0;
         skipped = istream.skip(start);
