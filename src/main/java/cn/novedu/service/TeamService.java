@@ -37,10 +37,6 @@ public class TeamService {
         return teamMapper.findById(id);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
-    public String createTeam(Team team) {
-        return createTeam(team.getName(), team.getDescription(), team.getClazzId(), team.getLeader() == null ? null : team.getLeader().getId());
-    }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = {RuntimeException.class})
     public String createTeam(String name, String description, String clazzId, String leaderId) {

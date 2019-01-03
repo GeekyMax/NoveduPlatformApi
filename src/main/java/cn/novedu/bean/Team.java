@@ -25,17 +25,15 @@ public class Team {
     /**
      * 队伍描述
      */
-    @MaxLength(value = 50)
+    @NotNull
     private String description;
     /**
      * 所属班级id
      */
-    @NotNull
     private String clazzId;
     /**
      * 队长
      */
-    @NotNull
     private StudentInfo leader;
     /**
      * 成员列表

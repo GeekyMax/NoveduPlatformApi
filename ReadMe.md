@@ -69,8 +69,10 @@ api.novedu.cn/v1/
   -  /auth/change-password POST 修改用户密码
   -  /users 用户信息
 - 课程信息(包括课程基本信息，教学大纲，教师信息)
+  -  /classes POST 添加课程
   -  /classes GET 获取所有课程信息
   -  /classes/:id GET 获取指定课程信息
+  -  /classes/students POST 添加学生
 - 课程组队
   -  /classes/:id/teams GET 获取所有队伍信息（支持过滤信息）
   -  /teams/:id GET 获取指定队伍信息
