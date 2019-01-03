@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <spring.version>4.3.18.RELEASE</spring.version>
+        <spring.version>5.1.2.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <mysql.version>8.0.12</mysql.version>
         <mybatis.version>3.4.6</mybatis.version>
@@ -424,8 +424,9 @@
         <repository>
             <id>163maven</id>
             <name>163 maven</name>
-            <!--<url>https://maven.aliyun.com/repository/central</url>-->
-            <url>http://mirrors.163.com/maven/repository/maven-public/</url>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <!--<url>http://mirrors.163.com/maven/repository/maven-public/</url>-->
         </repository>
     </repositories>
+
 </project>
