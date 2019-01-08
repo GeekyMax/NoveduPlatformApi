@@ -6,9 +6,15 @@
 
 ## 运行方法
 
+intellij Idea project with maven。
+
+需要tomcat和mysql的支持。
+
+附带可运行的编译后的文件，也可以对线上已部署的版本进行测试：http://api.novedu.cn
+
 ## 网站根目录
 
-api.novedu.cn/v1/
+api.novedu.cn/
 
 ## 响应格式
 
